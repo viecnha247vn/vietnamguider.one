@@ -4,109 +4,74 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>vietnamguider.one — The keychain / Móc khoá Việt Nam</title>
-<meta name="description" content="Handmade keychains from Việt Nam — the souvenir you'll actually keep. Móc khoá thủ công Việt Nam, món quà bạn sẽ thật sự giữ lại." />
+<meta name="description" content="Handmade keychains from Việt Nam — the souvenir you'll actually keep. Móc khoá thủ công Việt Nam." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700;800&family=Fraunces:opsz,ital,wght@0,9..144,400;0,9..144,560;1,9..144,480&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --bg:#E7DDC8;          /* warm điệp paper */
-    --bg-warm:#EDE4D2;
-    --surface:#F5EFE1;     /* cards float above bg */
-    --ink:#211A12;
-    --ink-soft:#6C6050;
-    --red:#B83A22;         /* lacquer vermilion — the signature accent */
-    --red-deep:#8E2A17;
-    --brass:#A9822F;
-    --brass-lt:#C69A45;
-    --jade:#2C6B55;
-    --lacquer:#211913;     /* dark panels */
-    --lacquer-2:#2C2118;
-    --line:rgba(33,26,18,.14);
-    --line-strong:rgba(33,26,18,.28);
+    --bg:#E7DDC8; --bg-warm:#EDE4D2; --surface:#F5EFE1;
+    --ink:#211A12; --ink-soft:#6C6050;
+    --red:#B83A22; --red-deep:#8E2A17;
+    --brass:#A9822F; --brass-lt:#C69A45; --jade:#2C6B55;
+    --lacquer:#211913; --lacquer-2:#2C2118;
+    --line:rgba(33,26,18,.14); --line-strong:rgba(33,26,18,.28);
     --paper-on-dark:#EFE6D6;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   html{scroll-behavior:smooth;}
-  body{
-    font-family:'Be Vietnam Pro',system-ui,sans-serif;
-    background:var(--bg);
-    color:var(--ink);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-  }
-  /* faint điệp-paper grain */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
-    background:
-      radial-gradient(circle at 18% 12%, rgba(184,58,34,.05), transparent 42%),
-      radial-gradient(circle at 88% 78%, rgba(169,130,47,.06), transparent 46%);
-  }
+  body{font-family:'Be Vietnam Pro',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background:radial-gradient(circle at 18% 12%, rgba(184,58,34,.05), transparent 42%),radial-gradient(circle at 88% 78%, rgba(169,130,47,.06), transparent 46%);}
   .wrap{max-width:1180px;margin:0 auto;padding:0 26px;position:relative;z-index:1;}
 
-  .display{
-    font-family:'Fraunces',Georgia,serif;
-    font-variation-settings:"opsz" 144;
-    font-weight:560;letter-spacing:-.02em;line-height:1.02;
-  }
-  body[data-lang="vi"] .display{
-    font-family:'Be Vietnam Pro',sans-serif;
-    font-variation-settings:normal;
-    font-weight:800;letter-spacing:-.015em;line-height:1.06;
-  }
+  .display{font-family:'Fraunces',Georgia,serif;font-variation-settings:"opsz" 144;font-weight:560;letter-spacing:-.02em;line-height:1.02;}
+  body[data-lang="vi"] .display{font-family:'Be Vietnam Pro',sans-serif;font-variation-settings:normal;font-weight:800;letter-spacing:-.015em;line-height:1.06;}
   .display em{font-style:italic;color:var(--red);}
   body[data-lang="vi"] .display em{font-style:normal;color:var(--red);}
 
-  .eyebrow{
-    font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;
-    letter-spacing:.26em;text-transform:uppercase;color:var(--red);
-    display:inline-flex;align-items:center;gap:10px;
-  }
+  .eyebrow{font-family:'Space Mono',monospace;font-size:11.5px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--red);display:inline-flex;align-items:center;gap:10px;}
   .eyebrow::before{content:"";width:26px;height:1px;background:var(--brass);display:inline-block;}
   .mono{font-family:'Space Mono',monospace;letter-spacing:.04em;}
 
-  /* ---------- top bar ---------- */
-  .bar{
-    position:sticky;top:0;z-index:50;
-    background:rgba(231,221,200,.82);backdrop-filter:blur(9px);
-    border-bottom:1px solid var(--line);
-  }
+  /* top bar */
+  .bar{position:sticky;top:0;z-index:50;background:rgba(231,221,200,.82);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);}
   .bar-in{display:flex;align-items:center;gap:18px;height:60px;}
   .brand{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:.02em;color:var(--ink);text-decoration:none;}
   .brand b{color:var(--red);}
   .bar-nav{margin-left:auto;display:flex;align-items:center;gap:26px;}
   .bar-nav a{font-size:13.5px;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .2s;}
   .bar-nav a:hover{color:var(--ink);}
-  .lang{
-    font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;
-    background:transparent;border:1px solid var(--line-strong);border-radius:999px;
-    padding:6px 12px;cursor:pointer;color:var(--ink);display:inline-flex;gap:6px;align-items:center;
-    transition:border-color .2s,background .2s;
-  }
-  .lang:hover{border-color:var(--red);}
-  .lang .on{color:var(--red);}
-  .lang .off{color:var(--ink-soft);opacity:.55;}
-  @media(max-width:620px){ .bar-nav a.navlink{display:none;} }
+  @media(max-width:640px){ .bar-nav a.navlink{display:none;} }
 
-  /* ---------- hero ---------- */
+  /* language dropdown */
+  .langwrap{position:relative;}
+  .lang{font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.08em;background:transparent;border:1px solid var(--line-strong);border-radius:999px;padding:6px 10px 6px 11px;cursor:pointer;color:var(--ink);display:inline-flex;gap:7px;align-items:center;transition:border-color .2s;}
+  .lang:hover{border-color:var(--red);}
+  .lang .globe{font-size:13px;line-height:1;}
+  .lang .caret{font-size:9px;color:var(--ink-soft);transition:transform .2s;}
+  .lang[aria-expanded="true"] .caret{transform:rotate(180deg);}
+  .lang-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:172px;background:var(--surface);border:1px solid var(--line-strong);border-radius:12px;box-shadow:0 16px 34px rgba(33,25,19,.16);padding:6px;list-style:none;display:none;z-index:60;}
+  .lang-menu.open{display:block;}
+  .lang-menu li{font-family:'Be Vietnam Pro',sans-serif;font-size:14px;font-weight:500;color:var(--ink);padding:9px 12px;border-radius:8px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:10px;}
+  .lang-menu li:hover{background:var(--bg-warm);}
+  .lang-menu li .code{font-family:'Space Mono',monospace;font-size:11px;color:var(--ink-soft);letter-spacing:.05em;}
+  .lang-menu li[aria-selected="true"]{color:var(--red);}
+  .lang-menu li[aria-selected="true"] .code{color:var(--red);}
+
+  /* hero */
   .hero{padding:64px 0 42px;}
   .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;}
   .hero h1{font-size:clamp(40px,7.4vw,86px);margin:20px 0 0;}
   .hero .lead{margin-top:22px;max-width:44ch;font-size:clamp(16px,1.7vw,18.5px);color:#3a322a;}
   .hero-cta{margin-top:30px;display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
-  .btn{
-    font-family:'Be Vietnam Pro';font-weight:600;font-size:15px;cursor:pointer;
-    padding:14px 24px;border-radius:10px;border:1px solid transparent;text-decoration:none;
-    display:inline-flex;align-items:center;gap:10px;transition:transform .16s ease,box-shadow .16s ease,background .2s;
-  }
+  .btn{font-family:'Be Vietnam Pro';font-weight:600;font-size:15px;cursor:pointer;padding:14px 24px;border-radius:10px;border:1px solid transparent;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:transform .16s ease,box-shadow .16s ease,background .2s;}
   .btn-primary{background:var(--red);color:#FBF3E6;box-shadow:0 8px 20px rgba(142,42,23,.24);}
   .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(142,42,23,.30);}
   .btn-primary .price{font-family:'Space Mono',monospace;font-size:13px;opacity:.9;border-left:1px solid rgba(255,255,255,.3);padding-left:10px;}
   .btn-ghost{background:transparent;border-color:var(--line-strong);color:var(--ink);}
   .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px);}
 
-  /* signature: swaying keychain */
   .keystage{position:relative;display:flex;justify-content:center;align-items:flex-start;min-height:360px;}
   .keystage figure{margin:0;text-align:center;}
   .keysvg{width:min(300px,72vw);height:auto;overflow:visible;}
@@ -117,7 +82,7 @@
   .keycap{margin-top:16px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);}
   .keycap b{color:var(--brass);}
 
-  /* ---------- manifesto ---------- */
+  /* manifesto */
   .man{padding:70px 0 8px;border-top:1px solid var(--line);}
   .man h2{font-size:clamp(27px,3.8vw,44px);max-width:20ch;margin-top:18px;}
   .man .body{margin-top:22px;max-width:56ch;font-size:17px;color:#3a322a;}
@@ -127,18 +92,14 @@
   .pillar p{margin-top:9px;font-size:14.5px;color:var(--ink-soft);line-height:1.55;}
   @media(max-width:760px){ .pillars{grid-template-columns:1fr;gap:24px;} }
 
-  /* ---------- collection ---------- */
+  /* collection */
   .coll{padding:78px 0 20px;}
   .coll-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;}
   .coll h2{font-size:clamp(27px,3.8vw,44px);margin-top:16px;}
   .grid{margin-top:40px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
   @media(max-width:900px){ .grid{grid-template-columns:repeat(2,1fr);} }
   @media(max-width:480px){ .grid{grid-template-columns:1fr;} }
-  .card{
-    background:var(--surface);border:1px solid var(--line);border-radius:16px;
-    padding:22px 20px 20px;display:flex;flex-direction:column;position:relative;overflow:hidden;
-    transition:transform .2s ease,box-shadow .2s ease,border-color .2s;
-  }
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 20px 20px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .2s ease,box-shadow .2s ease,border-color .2s;}
   .card::after{content:"";position:absolute;left:0;right:0;top:0;height:3px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
   .card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(33,25,19,.12);border-color:var(--line-strong);}
   .card:hover::after{transform:scaleX(1);}
@@ -153,46 +114,44 @@
   .pick{font-size:13px;font-weight:600;color:var(--red);background:transparent;border:1px solid var(--line-strong);border-radius:8px;padding:7px 12px;cursor:pointer;transition:background .2s,color .2s,border-color .2s;}
   .pick:hover{background:var(--red);color:#FBF3E6;border-color:var(--red);}
 
-  /* ---------- craft strip ---------- */
+  /* craft strip */
   .craft{margin:64px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
   .craft-in{display:grid;grid-template-columns:repeat(4,1fr);}
   .cr{padding:26px 22px;border-right:1px solid var(--line);display:flex;gap:12px;align-items:flex-start;}
   .cr:last-child{border-right:none;}
   .cr .dot{width:8px;height:8px;border-radius:50%;background:var(--red);margin-top:7px;flex:none;}
-  .cr span{font-size:13.5px;font-weight:500;color:#3a322a;line-height:1.4;}
+  .cr span.t{font-size:13.5px;font-weight:500;color:#3a322a;line-height:1.4;}
   @media(max-width:820px){ .craft-in{grid-template-columns:repeat(2,1fr);} .cr:nth-child(2){border-right:none;} .cr:nth-child(1),.cr:nth-child(2){border-bottom:1px solid var(--line);} }
   @media(max-width:460px){ .craft-in{grid-template-columns:1fr;} .cr{border-right:none;border-bottom:1px solid var(--line);} .cr:last-child{border-bottom:none;} }
 
-  /* ---------- lacquer quote panel ---------- */
+  /* lacquer quote */
   .panel{background:var(--lacquer);color:var(--paper-on-dark);margin-top:78px;position:relative;overflow:hidden;}
   .panel::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 0%,rgba(184,58,34,.18),transparent 55%);}
   .panel-in{padding:84px 26px;position:relative;text-align:center;}
   .panel .qmark{font-family:'Fraunces',serif;font-size:72px;color:var(--brass);line-height:.4;opacity:.7;}
-  .panel blockquote{font-family:'Fraunces',Georgia,serif;font-weight:480;font-style:italic;font-size:clamp(21px,3vw,32px);line-height:1.4;max-width:22ch;margin:24px auto 0;letter-spacing:-.01em;}
+  .panel blockquote{font-family:'Fraunces',Georgia,serif;font-weight:480;font-style:italic;font-size:clamp(21px,3vw,32px);line-height:1.4;max-width:24ch;margin:24px auto 0;letter-spacing:-.01em;}
   body[data-lang="vi"] .panel blockquote{font-family:'Be Vietnam Pro',sans-serif;font-style:normal;font-weight:500;}
   .panel .attr{margin-top:26px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass);}
 
-  /* ---------- final cta ---------- */
+  /* final cta */
   .final{padding:82px 0;text-align:center;}
   .final h2{font-size:clamp(30px,5vw,58px);}
-  .final p{margin-top:18px;font-size:17px;color:#3a322a;max-width:40ch;margin-left:auto;margin-right:auto;}
+  .final p{margin-top:18px;font-size:17px;color:#3a322a;max-width:42ch;margin-left:auto;margin-right:auto;}
   .final .btn{margin-top:30px;}
 
-  /* ---------- footer ---------- */
+  /* footer */
   .foot-site{background:var(--lacquer-2);color:#C9BFAE;padding:44px 0 40px;}
   .foot-grid{display:flex;justify-content:space-between;gap:28px;flex-wrap:wrap;align-items:flex-start;}
   .foot-site .fbrand{font-family:'Space Mono',monospace;font-weight:700;font-size:16px;color:#F1E8D8;text-decoration:none;}
   .foot-site .fbrand b{color:var(--red);}
-  .foot-site .ftag{margin-top:10px;font-size:13.5px;max-width:34ch;color:#B4A997;line-height:1.5;}
+  .foot-site .ftag{margin-top:10px;font-size:13.5px;max-width:36ch;color:#B4A997;line-height:1.5;}
   .foot-links{display:flex;gap:30px;flex-wrap:wrap;}
   .foot-links a{color:#C9BFAE;text-decoration:none;font-size:13.5px;transition:color .2s;}
   .foot-links a:hover{color:#F1E8D8;}
   .foot-base{margin-top:34px;padding-top:18px;border-top:1px solid rgba(255,255,255,.1);font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;color:#8E836F;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;}
 
-  /* reveal */
   .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease;}
   .reveal.in{opacity:1;transform:none;}
-
   :focus-visible{outline:2px solid var(--red);outline-offset:3px;border-radius:4px;}
 
   @media(max-width:860px){
@@ -214,12 +173,22 @@
     <div class="wrap bar-in">
       <a class="brand" href="#top">vietnamguider<b>.</b>one</a>
       <nav class="bar-nav">
-        <a class="navlink" href="#why" data-en="Why a keychain" data-vi="Vì sao móc khoá">Why a keychain</a>
-        <a class="navlink" href="#collection" data-en="Collection" data-vi="Bộ sưu tập">Collection</a>
-        <a class="navlink" href="#craft" data-en="Craft" data-vi="Chế tác">Craft</a>
-        <button class="lang" id="langBtn" aria-label="Switch language / Đổi ngôn ngữ">
-          <span class="on" id="lOn">EN</span><span class="off" id="lOff">VI</span>
-        </button>
+        <a class="navlink" href="#why"        data-en="Why a keychain" data-vi="Vì sao móc khoá" data-de="Warum ein Anhänger" data-fr="Pourquoi un porte-clés" data-es="Por qué un llavero">Why a keychain</a>
+        <a class="navlink" href="#collection" data-en="Collection"     data-vi="Bộ sưu tập"      data-de="Kollektion"        data-fr="Collection"           data-es="Colección">Collection</a>
+        <a class="navlink" href="#craft"      data-en="Craft"          data-vi="Chế tác"          data-de="Handwerk"          data-fr="Fabrication"          data-es="Artesanía">Craft</a>
+
+        <div class="langwrap">
+          <button class="lang" id="langBtn" aria-haspopup="listbox" aria-expanded="false" aria-label="Choose language">
+            <span class="globe" aria-hidden="true">🌐</span><span id="langCur">EN</span><span class="caret" aria-hidden="true">▾</span>
+          </button>
+          <ul class="lang-menu" id="langMenu" role="listbox" aria-label="Language">
+            <li role="option" data-set="en" aria-selected="true">English <span class="code">EN</span></li>
+            <li role="option" data-set="vi" aria-selected="false">Tiếng Việt <span class="code">VI</span></li>
+            <li role="option" data-set="de" aria-selected="false">Deutsch <span class="code">DE</span></li>
+            <li role="option" data-set="fr" aria-selected="false">Français <span class="code">FR</span></li>
+            <li role="option" data-set="es" aria-selected="false">Español <span class="code">ES</span></li>
+          </ul>
+        </div>
       </nav>
     </div>
   </header>
@@ -230,56 +199,56 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <div>
-          <span class="eyebrow" data-en="Handmade in Việt Nam · Keepsake Nº 01" data-vi="Thủ công tại Việt Nam · Kỷ vật Nº 01">Handmade in Việt Nam · Keepsake Nº 01</span>
+          <span class="eyebrow"
+            data-en="Handmade in Việt Nam · Keepsake Nº 01"
+            data-vi="Thủ công tại Việt Nam · Kỷ vật Nº 01"
+            data-de="Handgefertigt in Việt Nam · Andenken Nº 01"
+            data-fr="Fait main au Việt Nam · Souvenir Nº 01"
+            data-es="Hecho a mano en Việt Nam · Recuerdo Nº 01">Handmade in Việt Nam · Keepsake Nº 01</span>
+
           <h1 class="display"
-              data-en="The souvenir<br>you'll <em>actually keep.</em>"
-              data-vi="Món quà bạn<br>sẽ <em>thật sự giữ lại.</em>">The souvenir<br>you'll <em>actually keep.</em></h1>
+            data-en="The souvenir<br>you'll <em>actually keep.</em>"
+            data-vi="Món quà bạn<br>sẽ <em>thật sự giữ lại.</em>"
+            data-de="Das Souvenir,<br>das du <em>wirklich behältst.</em>"
+            data-fr="Le souvenir<br>que vous <em>garderez vraiment.</em>"
+            data-es="El recuerdo<br>que <em>sí conservarás.</em>">The souvenir<br>you'll <em>actually keep.</em></h1>
+
           <p class="lead"
-             data-en="You didn't fly across the world for a fridge magnet. Take home something small enough to ride on your keys — and bring Việt Nam back to you every time you reach for the door."
-             data-vi="Bạn không bay nửa vòng trái đất để mua một cục nam châm dán tủ lạnh. Hãy mang về thứ đủ nhỏ để đi cùng chùm chìa khoá — để mỗi lần mở cửa, Việt Nam lại hiện về.">You didn't fly across the world for a fridge magnet. Take home something small enough to ride on your keys — and bring Việt Nam back to you every time you reach for the door.</p>
+            data-en="You didn't fly across the world for a fridge magnet. Take home something small enough to ride on your keys — and bring Việt Nam back to you every time you reach for the door."
+            data-vi="Bạn không bay nửa vòng trái đất để mua một cục nam châm dán tủ lạnh. Hãy mang về thứ đủ nhỏ để đi cùng chùm chìa khoá — để mỗi lần mở cửa, Việt Nam lại hiện về."
+            data-de="Du bist nicht um die halbe Welt geflogen für einen Kühlschrankmagneten. Nimm etwas mit nach Hause, das klein genug für deinen Schlüsselbund ist – und dir Việt Nam zurückbringt, jedes Mal, wenn du zur Tür greifst."
+            data-fr="Vous n'avez pas traversé le monde pour un aimant de frigo. Rapportez quelque chose d'assez petit pour tenir sur vos clés — et qui vous ramène le Việt Nam chaque fois que vous ouvrez la porte."
+            data-es="No cruzaste medio mundo por un imán de nevera. Llévate a casa algo lo bastante pequeño para llevar en tus llaves — y que te devuelva Việt Nam cada vez que abres la puerta.">You didn't fly across the world for a fridge magnet. Take home something small enough to ride on your keys — and bring Việt Nam back to you every time you reach for the door.</p>
+
           <div class="hero-cta">
             <a class="btn btn-primary" href="#collection">
-              <span data-en="Shop the keychain" data-vi="Mua móc khoá">Shop the keychain</span>
+              <span data-en="Shop the keychain" data-vi="Mua móc khoá" data-de="Anhänger kaufen" data-fr="Acheter le porte-clés" data-es="Comprar el llavero">Shop the keychain</span>
               <span class="price">$8 · 199.000₫</span>
             </a>
-            <a class="btn btn-ghost" href="#why" data-en="Why it matters" data-vi="Vì sao đáng giữ">Why it matters</a>
+            <a class="btn btn-ghost" href="#why"
+              data-en="Why it matters" data-vi="Vì sao đáng giữ" data-de="Warum das zählt" data-fr="Pourquoi ça compte" data-es="Por qué importa">Why it matters</a>
           </div>
         </div>
 
         <div class="keystage">
           <figure>
-            <svg class="keysvg" viewBox="0 0 240 340" role="img"
-                 aria-label="A conical-hat keychain from Việt Nam / Móc khoá nón lá Việt Nam">
-              <!-- ground shadow -->
+            <svg class="keysvg" viewBox="0 0 240 340" role="img" aria-label="A conical-hat keychain from Việt Nam">
               <ellipse class="keyshadow" cx="120" cy="326" rx="60" ry="9" fill="#211A12"/>
               <g id="sway">
-                <!-- split ring -->
                 <circle cx="120" cy="34" r="22" fill="none" stroke="#C69A45" stroke-width="6"/>
                 <circle cx="120" cy="34" r="22" fill="none" stroke="#A9822F" stroke-width="2" opacity=".6"/>
-                <!-- connector loop -->
                 <path d="M120 56 C112 66,112 74,120 82 C128 74,128 66,120 56 Z" fill="none" stroke="#A9822F" stroke-width="5"/>
                 <line x1="120" y1="82" x2="120" y2="104" stroke="#A9822F" stroke-width="6" stroke-linecap="round"/>
-
-                <!-- nón lá charm -->
                 <g transform="translate(0,4)">
-                  <!-- brim -->
-                  <path d="M120 116 C160 172,196 214,204 236 C168 250,72 250,36 236 C44 214,80 172,120 116 Z"
-                        fill="#B83A22" stroke="#8E2A17" stroke-width="2"/>
-                  <!-- inner sheen -->
-                  <path d="M120 128 C150 174,180 208,190 228 C120 214,120 214,50 228 C60 208,90 174,120 128 Z"
-                        fill="#C84A31" opacity=".55"/>
-                  <!-- weave arcs (brass) -->
+                  <path d="M120 116 C160 172,196 214,204 236 C168 250,72 250,36 236 C44 214,80 172,120 116 Z" fill="#B83A22" stroke="#8E2A17" stroke-width="2"/>
+                  <path d="M120 128 C150 174,180 208,190 228 C120 214,120 214,50 228 C60 208,90 174,120 128 Z" fill="#C84A31" opacity=".55"/>
                   <path d="M64 228 C92 196,110 168,120 150" fill="none" stroke="#E7C878" stroke-width="1.6" opacity=".75"/>
                   <path d="M92 236 C112 208,120 190,124 174" fill="none" stroke="#E7C878" stroke-width="1.6" opacity=".6"/>
                   <path d="M176 228 C148 196,130 168,120 150" fill="none" stroke="#E7C878" stroke-width="1.6" opacity=".75"/>
                   <path d="M148 236 C128 208,120 190,116 174" fill="none" stroke="#E7C878" stroke-width="1.6" opacity=".6"/>
-                  <!-- rim highlight -->
                   <path d="M36 236 C72 250,168 250,204 236" fill="none" stroke="#E7C878" stroke-width="2.4"/>
-                  <!-- apex knob -->
                   <circle cx="120" cy="118" r="6.5" fill="#C69A45" stroke="#8E6A1F" stroke-width="1.4"/>
                 </g>
-
-                <!-- little brass tag -->
                 <g transform="translate(150,150) rotate(12)">
                   <rect x="0" y="0" width="52" height="30" rx="6" fill="#C69A45" stroke="#8E6A1F" stroke-width="1.4"/>
                   <circle cx="10" cy="15" r="4" fill="none" stroke="#8E6A1F" stroke-width="1.6"/>
@@ -287,7 +256,12 @@
                 </g>
               </g>
             </svg>
-            <figcaption class="keycap" data-en="Object Nº 01 — <b>Nón Lá</b>, brass &amp; lacquer" data-vi="Vật phẩm Nº 01 — <b>Nón Lá</b>, đồng &amp; sơn son">Object Nº 01 — <b>Nón Lá</b>, brass &amp; lacquer</figcaption>
+            <figcaption class="keycap"
+              data-en="Object Nº 01 — <b>Nón Lá</b>, brass &amp; lacquer"
+              data-vi="Vật phẩm Nº 01 — <b>Nón Lá</b>, đồng &amp; sơn son"
+              data-de="Objekt Nº 01 — <b>Nón Lá</b>, Messing &amp; Lack"
+              data-fr="Objet Nº 01 — <b>Nón Lá</b>, laiton &amp; laque"
+              data-es="Objeto Nº 01 — <b>Nón Lá</b>, latón &amp; laca">Object Nº 01 — <b>Nón Lá</b>, brass &amp; lacquer</figcaption>
           </figure>
         </div>
       </div>
@@ -296,29 +270,47 @@
     <!-- ===== manifesto ===== -->
     <section class="man reveal" id="why">
       <div class="wrap">
-        <span class="eyebrow" data-en="Why a keychain" data-vi="Vì sao là móc khoá">Why a keychain</span>
+        <span class="eyebrow"
+          data-en="Why a keychain" data-vi="Vì sao là móc khoá" data-de="Warum ein Anhänger" data-fr="Pourquoi un porte-clés" data-es="Por qué un llavero">Why a keychain</span>
+
         <h2 class="display"
-            data-en="We don't sell keychains. We sell the part of the trip you get to keep."
-            data-vi="Chúng tôi không bán móc khoá. Chúng tôi bán phần chuyến đi bạn được giữ lại.">We don't sell keychains. We sell the part of the trip you get to keep.</h2>
+          data-en="We don't sell keychains. We sell the part of the trip you get to keep."
+          data-vi="Chúng tôi không bán móc khoá. Chúng tôi bán phần chuyến đi bạn được giữ lại."
+          data-de="Wir verkaufen keine Anhänger. Wir verkaufen den Teil der Reise, den du behalten darfst."
+          data-fr="Nous ne vendons pas des porte-clés. Nous vendons la part du voyage que vous gardez."
+          data-es="No vendemos llaveros. Vendemos la parte del viaje que sí te puedes quedar.">We don't sell keychains. We sell the part of the trip you get to keep.</h2>
+
         <p class="body"
-           data-en="A souvenir has one job: to bring back a feeling. Most fail at it — too big to carry home, too fragile to use, too generic to mean anything. A keychain does the quiet, daily work a keepsake is supposed to do. Small enough to travel in a pocket. Sturdy enough to last for years. Made here, by hand, from something real about this country."
-           data-vi="Một món lưu niệm chỉ có một nhiệm vụ: gợi lại một cảm xúc. Phần lớn đều thất bại — quá to để mang về, quá dễ vỡ để dùng, quá chung chung để có ý nghĩa. Chiếc móc khoá làm đúng cái việc lặng lẽ, mỗi ngày, mà một kỷ vật nên làm. Đủ nhỏ để nằm gọn trong túi. Đủ bền để theo bạn nhiều năm. Làm ngay tại đây, bằng tay, từ một điều thật của đất nước này.">A souvenir has one job: to bring back a feeling. Most fail at it — too big to carry home, too fragile to use, too generic to mean anything. A keychain does the quiet, daily work a keepsake is supposed to do. Small enough to travel in a pocket. Sturdy enough to last for years. Made here, by hand, from something real about this country.</p>
+          data-en="A souvenir has one job: to bring back a feeling. Most fail at it — too big to carry home, too fragile to use, too generic to mean anything. A keychain does the quiet, daily work a keepsake is supposed to do. Small enough to travel in a pocket. Sturdy enough to last for years. Made here, by hand, from something real about this country."
+          data-vi="Một món lưu niệm chỉ có một nhiệm vụ: gợi lại một cảm xúc. Phần lớn đều thất bại — quá to để mang về, quá dễ vỡ để dùng, quá chung chung để có ý nghĩa. Chiếc móc khoá làm đúng cái việc lặng lẽ, mỗi ngày, mà một kỷ vật nên làm. Đủ nhỏ để nằm gọn trong túi. Đủ bền để theo bạn nhiều năm. Làm ngay tại đây, bằng tay, từ một điều thật của đất nước này."
+          data-de="Ein Souvenir hat eine einzige Aufgabe: ein Gefühl zurückzubringen. Die meisten scheitern daran – zu groß zum Mitnehmen, zu zerbrechlich zum Benutzen, zu beliebig, um etwas zu bedeuten. Ein Anhänger leistet die stille, tägliche Arbeit, die ein Andenken leisten sollte. Klein genug für die Hosentasche. Robust genug für viele Jahre. Hier gefertigt, von Hand, aus etwas Echtem von diesem Land."
+          data-fr="Un souvenir a une seule mission : faire revenir une émotion. La plupart échouent — trop encombrants à rapporter, trop fragiles à utiliser, trop génériques pour signifier quoi que ce soit. Un porte-clés fait le travail discret et quotidien qu'un souvenir devrait faire. Assez petit pour voyager dans une poche. Assez solide pour durer des années. Fabriqué ici, à la main, à partir de quelque chose de vrai de ce pays."
+          data-es="Un recuerdo tiene una sola misión: devolver una emoción. La mayoría fracasa — demasiado grande para llevar, demasiado frágil para usar, demasiado genérico para significar algo. Un llavero hace el trabajo silencioso y diario que un recuerdo debería hacer. Lo bastante pequeño para viajar en un bolsillo. Lo bastante resistente para durar años. Hecho aquí, a mano, a partir de algo real de este país.">A souvenir has one job: to bring back a feeling. Most fail at it — too big to carry home, too fragile to use, too generic to mean anything. A keychain does the quiet, daily work a keepsake is supposed to do. Small enough to travel in a pocket. Sturdy enough to last for years. Made here, by hand, from something real about this country.</p>
 
         <div class="pillars">
           <div class="pillar">
-            <h3 data-en="Used, not stored." data-vi="Để dùng, không để cất.">Used, not stored.</h3>
+            <h3 data-en="Used, not stored." data-vi="Để dùng, không để cất." data-de="Benutzt, nicht verstaut." data-fr="Utilisé, pas rangé." data-es="Se usa, no se guarda.">Used, not stored.</h3>
             <p data-en="You reach for your keys a dozen times a day. That's a dozen small returns to Việt Nam — long after the tan has faded."
-               data-vi="Mỗi ngày bạn cầm chìa khoá cả chục lần. Là cả chục lần Việt Nam trở lại — rất lâu sau khi màu nắng đã phai.">You reach for your keys a dozen times a day. That's a dozen small returns to Việt Nam — long after the tan has faded.</p>
+               data-vi="Mỗi ngày bạn cầm chìa khoá cả chục lần. Là cả chục lần Việt Nam trở lại — rất lâu sau khi màu nắng đã phai."
+               data-de="Du greifst dutzende Male am Tag nach deinen Schlüsseln. Das sind dutzende kleine Rückkehr nach Việt Nam – lange nachdem die Bräune verblasst ist."
+               data-fr="Vous attrapez vos clés une dizaine de fois par jour. Autant de petits retours au Việt Nam — bien après que le bronzage s'est estompé."
+               data-es="Coges tus llaves una docena de veces al día. Son una docena de pequeños regresos a Việt Nam — mucho después de que el bronceado se apague.">You reach for your keys a dozen times a day. That's a dozen small returns to Việt Nam — long after the tan has faded.</p>
           </div>
           <div class="pillar">
-            <h3 data-en="A real piece of the place." data-vi="Một mảnh thật của nơi này.">A real piece of the place.</h3>
+            <h3 data-en="A real piece of the place." data-vi="Một mảnh thật của nơi này." data-de="Ein echtes Stück des Landes." data-fr="Un vrai morceau du lieu." data-es="Un trozo real del lugar.">A real piece of the place.</h3>
             <p data-en="Every design is drawn from Vietnamese life — the conical hat, the cyclo, the glass of cà phê sữa đá — not a flag on a strap."
-               data-vi="Mỗi mẫu lấy từ đời sống Việt — chiếc nón lá, chiếc xích lô, ly cà phê sữa đá — chứ không phải một lá cờ gắn vội.">Every design is drawn from Vietnamese life — the conical hat, the cyclo, the glass of cà phê sữa đá — not a flag on a strap.</p>
+               data-vi="Mỗi mẫu lấy từ đời sống Việt — chiếc nón lá, chiếc xích lô, ly cà phê sữa đá — chứ không phải một lá cờ gắn vội."
+               data-de="Jedes Motiv stammt aus dem vietnamesischen Alltag – der Kegelhut, die Cyclo-Rikscha, das Glas cà phê sữa đá – keine Flagge an einem Band."
+               data-fr="Chaque motif vient de la vie vietnamienne — le chapeau conique, le cyclo, le verre de cà phê sữa đá — pas un drapeau sur une lanière."
+               data-es="Cada diseño nace de la vida vietnamita — el sombrero cónico, el cyclo, el vaso de cà phê sữa đá — no una bandera en una correa.">Every design is drawn from Vietnamese life — the conical hat, the cyclo, the glass of cà phê sữa đá — not a flag on a strap.</p>
           </div>
           <div class="pillar">
-            <h3 data-en="Made by hand, here." data-vi="Làm thủ công, ngay tại đây.">Made by hand, here.</h3>
+            <h3 data-en="Made by hand, here." data-vi="Làm thủ công, ngay tại đây." data-de="Von Hand gefertigt, hier." data-fr="Fait main, ici." data-es="Hecho a mano, aquí.">Made by hand, here.</h3>
             <p data-en="Cast, finished and assembled by local makers, with solid brass hardware built to outlast the journey home."
-               data-vi="Được đúc, hoàn thiện và lắp ráp bởi thợ Việt, với khoá đồng đặc bền hơn cả chặng đường về nhà.">Cast, finished and assembled by local makers, with solid brass hardware built to outlast the journey home.</p>
+               data-vi="Được đúc, hoàn thiện và lắp ráp bởi thợ Việt, với khoá đồng đặc bền hơn cả chặng đường về nhà."
+               data-de="Gegossen, veredelt und montiert von einheimischen Handwerkern, mit massiven Messingbeschlägen, die den Heimweg überdauern."
+               data-fr="Moulé, fini et assemblé par des artisans locaux, avec une quincaillerie en laiton massif faite pour survivre au voyage du retour."
+               data-es="Fundido, acabado y ensamblado por artesanos locales, con herrajes de latón macizo hechos para sobrevivir al viaje de vuelta.">Cast, finished and assembled by local makers, with solid brass hardware built to outlast the journey home.</p>
           </div>
         </div>
       </div>
@@ -329,10 +321,10 @@
       <div class="wrap">
         <div class="coll-head">
           <div>
-            <span class="eyebrow" data-en="The collection · Nº 01–04" data-vi="Bộ sưu tập · Nº 01–04">The collection · Nº 01–04</span>
-            <h2 class="display" data-en="Four small pieces of Việt Nam." data-vi="Bốn mảnh nhỏ của Việt Nam.">Four small pieces of Việt Nam.</h2>
+            <span class="eyebrow" data-en="The collection · Nº 01–04" data-vi="Bộ sưu tập · Nº 01–04" data-de="Die Kollektion · Nº 01–04" data-fr="La collection · Nº 01–04" data-es="La colección · Nº 01–04">The collection · Nº 01–04</span>
+            <h2 class="display" data-en="Four small pieces of Việt Nam." data-vi="Bốn mảnh nhỏ của Việt Nam." data-de="Vier kleine Stücke von Việt Nam." data-fr="Quatre petits morceaux du Việt Nam." data-es="Cuatro pequeños trozos de Việt Nam.">Four small pieces of Việt Nam.</h2>
           </div>
-          <span class="mono" style="font-size:12px;color:var(--ink-soft)" data-en="Solid brass · $8 each" data-vi="Đồng đặc · 199.000₫ / chiếc">Solid brass · $8 each</span>
+          <span class="mono" style="font-size:12px;color:var(--ink-soft)" data-en="Solid brass · $8 each" data-vi="Đồng đặc · 199.000₫ / chiếc" data-de="Massives Messing · je 8 $" data-fr="Laiton massif · 8 $ pièce" data-es="Latón macizo · 8 $ c/u">Solid brass · $8 each</span>
         </div>
 
         <div class="grid">
@@ -349,9 +341,9 @@
               </svg>
             </div>
             <h3>Nón Lá</h3>
-            <span class="vn" data-en="The conical hat" data-vi="Chiếc nón lá">The conical hat</span>
-            <p class="desc" data-en="The silhouette everyone remembers, from the rice fields to the markets." data-vi="Dáng hình ai cũng nhớ, từ cánh đồng lúa đến phiên chợ quê.">The silhouette everyone remembers, from the rice fields to the markets.</p>
-            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn">Choose</button></div>
+            <span class="vn" data-en="The conical hat" data-vi="Chiếc nón lá" data-de="Der Kegelhut" data-fr="Le chapeau conique" data-es="El sombrero cónico">The conical hat</span>
+            <p class="desc" data-en="The silhouette everyone remembers, from the rice fields to the markets." data-vi="Dáng hình ai cũng nhớ, từ cánh đồng lúa đến phiên chợ quê." data-de="Die Silhouette, an die sich jeder erinnert – von den Reisfeldern bis zu den Märkten." data-fr="La silhouette dont tout le monde se souvient, des rizières aux marchés." data-es="La silueta que todos recuerdan, de los arrozales a los mercados.">The silhouette everyone remembers, from the rice fields to the markets.</p>
+            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn" data-de="Wählen" data-fr="Choisir" data-es="Elegir">Choose</button></div>
           </article>
 
           <!-- Xích Lô -->
@@ -368,9 +360,9 @@
               </svg>
             </div>
             <h3>Xích Lô</h3>
-            <span class="vn" data-en="The cyclo" data-vi="Chiếc xích lô">The cyclo</span>
-            <p class="desc" data-en="The slow ride through the old quarter, cast in brass." data-vi="Vòng xe chầm chậm qua phố cổ, đúc bằng đồng.">The slow ride through the old quarter, cast in brass.</p>
-            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn">Choose</button></div>
+            <span class="vn" data-en="The cyclo" data-vi="Chiếc xích lô" data-de="Die Cyclo-Rikscha" data-fr="Le cyclo" data-es="El cyclo">The cyclo</span>
+            <p class="desc" data-en="The slow ride through the old quarter, cast in brass." data-vi="Vòng xe chầm chậm qua phố cổ, đúc bằng đồng." data-de="Die gemächliche Fahrt durch die Altstadt, in Messing gegossen." data-fr="La balade tranquille à travers la vieille ville, coulée en laiton." data-es="El paseo lento por el casco antiguo, fundido en latón.">The slow ride through the old quarter, cast in brass.</p>
+            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn" data-de="Wählen" data-fr="Choisir" data-es="Elegir">Choose</button></div>
           </article>
 
           <!-- Cà Phê -->
@@ -387,9 +379,9 @@
               </svg>
             </div>
             <h3>Cà Phê Sữa Đá</h3>
-            <span class="vn" data-en="The iced coffee" data-vi="Ly cà phê sữa đá">The iced coffee</span>
-            <p class="desc" data-en="The three-o'clock ritual you'll miss the most." data-vi="Thói quen 3 giờ chiều mà bạn sẽ nhớ nhất.">The three-o'clock ritual you'll miss the most.</p>
-            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn">Choose</button></div>
+            <span class="vn" data-en="The iced coffee" data-vi="Ly cà phê sữa đá" data-de="Der Eiskaffee" data-fr="Le café glacé" data-es="El café helado">The iced coffee</span>
+            <p class="desc" data-en="The three-o'clock ritual you'll miss the most." data-vi="Thói quen 3 giờ chiều mà bạn sẽ nhớ nhất." data-de="Das Ritual um drei Uhr, das dir am meisten fehlen wird." data-fr="Le rituel de quinze heures qui vous manquera le plus." data-es="El ritual de las tres de la tarde que más echarás de menos.">The three-o'clock ritual you'll miss the most.</p>
+            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn" data-de="Wählen" data-fr="Choisir" data-es="Elegir">Choose</button></div>
           </article>
 
           <!-- Sen -->
@@ -404,9 +396,9 @@
               </svg>
             </div>
             <h3>Sen</h3>
-            <span class="vn" data-en="The lotus" data-vi="Hoa sen">The lotus</span>
-            <p class="desc" data-en="The national flower — quiet, and impossible to forget." data-vi="Quốc hoa — lặng lẽ, mà không thể nào quên.">The national flower — quiet, and impossible to forget.</p>
-            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn">Choose</button></div>
+            <span class="vn" data-en="The lotus" data-vi="Hoa sen" data-de="Der Lotus" data-fr="Le lotus" data-es="El loto">The lotus</span>
+            <p class="desc" data-en="The national flower — quiet, and impossible to forget." data-vi="Quốc hoa — lặng lẽ, mà không thể nào quên." data-de="Die Nationalblume – still und unvergesslich." data-fr="La fleur nationale — discrète et inoubliable." data-es="La flor nacional — discreta e inolvidable.">The national flower — quiet, and impossible to forget.</p>
+            <div class="foot"><span class="cprice">$8</span><button class="pick" data-en="Choose" data-vi="Chọn" data-de="Wählen" data-fr="Choisir" data-es="Elegir">Choose</button></div>
           </article>
         </div>
       </div>
@@ -415,10 +407,10 @@
     <!-- ===== craft strip ===== -->
     <section class="craft reveal" id="craft">
       <div class="wrap craft-in">
-        <div class="cr"><span class="dot"></span><span data-en="Solid brass ring &amp; clasp" data-vi="Vòng &amp; khoá đồng đặc">Solid brass ring &amp; clasp</span></div>
-        <div class="cr"><span class="dot"></span><span data-en="Hand-finished, sealed to last" data-vi="Hoàn thiện thủ công, phủ bền màu">Hand-finished, sealed to last</span></div>
-        <div class="cr"><span class="dot"></span><span data-en="Arrives gift-ready in a kraft sleeve" data-vi="Đóng gói quà sẵn trong bao giấy kraft">Arrives gift-ready in a kraft sleeve</span></div>
-        <div class="cr"><span class="dot"></span><span data-en="Ships worldwide from Việt Nam" data-vi="Giao toàn cầu từ Việt Nam">Ships worldwide from Việt Nam</span></div>
+        <div class="cr"><span class="dot"></span><span class="t" data-en="Solid brass ring &amp; clasp" data-vi="Vòng &amp; khoá đồng đặc" data-de="Ring &amp; Verschluss aus massivem Messing" data-fr="Anneau &amp; fermoir en laiton massif" data-es="Anilla &amp; cierre de latón macizo">Solid brass ring &amp; clasp</span></div>
+        <div class="cr"><span class="dot"></span><span class="t" data-en="Hand-finished, sealed to last" data-vi="Hoàn thiện thủ công, phủ bền màu" data-de="Von Hand veredelt, versiegelt für die Dauer" data-fr="Fini à la main, scellé pour durer" data-es="Acabado a mano, sellado para durar">Hand-finished, sealed to last</span></div>
+        <div class="cr"><span class="dot"></span><span class="t" data-en="Arrives gift-ready in a kraft sleeve" data-vi="Đóng gói quà sẵn trong bao giấy kraft" data-de="Kommt geschenkfertig in einer Kraftpapier-Hülle" data-fr="Livré prêt à offrir dans un étui kraft" data-es="Llega listo para regalar en un sobre kraft">Arrives gift-ready in a kraft sleeve</span></div>
+        <div class="cr"><span class="dot"></span><span class="t" data-en="Ships worldwide from Việt Nam" data-vi="Giao toàn cầu từ Việt Nam" data-de="Weltweiter Versand aus Việt Nam" data-fr="Expédié dans le monde entier depuis le Việt Nam" data-es="Envío a todo el mundo desde Việt Nam">Ships worldwide from Việt Nam</span></div>
       </div>
     </section>
 
@@ -428,7 +420,10 @@
         <div class="qmark">“</div>
         <blockquote
           data-en="You'll unpack the clothes, forget the magnets, and lose the receipts. The keychain will still be there — on your keys, in your hand, a small piece of Việt Nam that came home with you."
-          data-vi="Rồi bạn sẽ dỡ hết quần áo, quên mấy cục nam châm, đánh mất mớ hoá đơn. Chiếc móc khoá thì vẫn ở đó — trên chùm chìa, trong lòng tay, một mảnh Việt Nam đã theo bạn về nhà.">You'll unpack the clothes, forget the magnets, and lose the receipts. The keychain will still be there — on your keys, in your hand, a small piece of Việt Nam that came home with you.</blockquote>
+          data-vi="Rồi bạn sẽ dỡ hết quần áo, quên mấy cục nam châm, đánh mất mớ hoá đơn. Chiếc móc khoá thì vẫn ở đó — trên chùm chìa, trong lòng tay, một mảnh Việt Nam đã theo bạn về nhà."
+          data-de="Du wirst die Kleidung auspacken, die Magneten vergessen und die Quittungen verlieren. Der Anhänger wird noch da sein – an deinen Schlüsseln, in deiner Hand, ein kleines Stück Việt Nam, das mit dir nach Hause kam."
+          data-fr="Vous rangerez les vêtements, oublierez les aimants et perdrez les tickets. Le porte-clés, lui, sera toujours là — sur vos clés, dans votre main, un petit morceau du Việt Nam rentré avec vous."
+          data-es="Desharás la maleta, olvidarás los imanes y perderás los tickets. El llavero seguirá ahí — en tus llaves, en tu mano, un pequeño trozo de Việt Nam que volvió a casa contigo.">You'll unpack the clothes, forget the magnets, and lose the receipts. The keychain will still be there — on your keys, in your hand, a small piece of Việt Nam that came home with you.</blockquote>
         <div class="attr">vietnamguider.one</div>
       </div>
     </section>
@@ -436,10 +431,14 @@
     <!-- ===== final cta ===== -->
     <section class="final reveal">
       <div class="wrap">
-        <h2 class="display" data-en="Carry Việt Nam home." data-vi="Mang Việt Nam về nhà.">Carry Việt Nam home.</h2>
-        <p data-en="One keychain. Every day, for years. $8 — with worldwide shipping." data-vi="Một chiếc móc khoá. Mỗi ngày, suốt nhiều năm. 199.000₫ — giao hàng toàn cầu.">One keychain. Every day, for years. $8 — with worldwide shipping.</p>
+        <h2 class="display" data-en="Carry Việt Nam home." data-vi="Mang Việt Nam về nhà." data-de="Trag Việt Nam nach Hause." data-fr="Ramenez le Việt Nam chez vous." data-es="Llévate Việt Nam a casa.">Carry Việt Nam home.</h2>
+        <p data-en="One keychain. Every day, for years. $8 — with worldwide shipping."
+           data-vi="Một chiếc móc khoá. Mỗi ngày, suốt nhiều năm. 199.000₫ — giao hàng toàn cầu."
+           data-de="Ein Anhänger. Jeden Tag, über Jahre. 8 $ — mit weltweitem Versand."
+           data-fr="Un porte-clés. Chaque jour, pendant des années. 8 $ — livraison mondiale incluse."
+           data-es="Un llavero. Cada día, durante años. 8 $ — con envío a todo el mundo.">One keychain. Every day, for years. $8 — with worldwide shipping.</p>
         <a class="btn btn-primary" href="#collection">
-          <span data-en="Shop now" data-vi="Mua ngay">Shop now</span>
+          <span data-en="Shop now" data-vi="Mua ngay" data-de="Jetzt kaufen" data-fr="Acheter maintenant" data-es="Comprar ahora">Shop now</span>
           <span class="price">$8 · 199.000₫</span>
         </a>
       </div>
@@ -452,45 +451,58 @@
       <div class="foot-grid">
         <div>
           <a class="fbrand" href="#top">vietnamguider<b>.</b>one</a>
-          <p class="ftag" data-en="Real things to take home from Việt Nam. Chosen for meaning, made by hand." data-vi="Những món thật để mang về từ Việt Nam. Chọn vì ý nghĩa, làm bằng tay.">Real things to take home from Việt Nam. Chosen for meaning, made by hand.</p>
+          <p class="ftag"
+            data-en="Real things to take home from Việt Nam. Chosen for meaning, made by hand."
+            data-vi="Những món thật để mang về từ Việt Nam. Chọn vì ý nghĩa, làm bằng tay."
+            data-de="Echte Dinge zum Mitnehmen aus Việt Nam. Mit Bedeutung ausgewählt, von Hand gefertigt."
+            data-fr="De vraies choses à rapporter du Việt Nam. Choisies pour leur sens, faites à la main."
+            data-es="Cosas auténticas para llevar de Việt Nam. Elegidas por su significado, hechas a mano.">Real things to take home from Việt Nam. Chosen for meaning, made by hand.</p>
         </div>
         <nav class="foot-links">
-          <a href="#why" data-en="Why a keychain" data-vi="Vì sao móc khoá">Why a keychain</a>
-          <a href="#collection" data-en="Collection" data-vi="Bộ sưu tập">Collection</a>
-          <a href="#craft" data-en="Craft" data-vi="Chế tác">Craft</a>
+          <a href="#why"        data-en="Why a keychain" data-vi="Vì sao móc khoá" data-de="Warum ein Anhänger" data-fr="Pourquoi un porte-clés" data-es="Por qué un llavero">Why a keychain</a>
+          <a href="#collection" data-en="Collection"     data-vi="Bộ sưu tập"      data-de="Kollektion"        data-fr="Collection"           data-es="Colección">Collection</a>
+          <a href="#craft"      data-en="Craft"          data-vi="Chế tác"          data-de="Handwerk"          data-fr="Fabrication"          data-es="Artesanía">Craft</a>
           <a href="mailto:hello@vietnamguider.one">hello@vietnamguider.one</a>
         </nav>
       </div>
       <div class="foot-base">
         <span>© 2026 vietnamguider.one</span>
-        <span data-en="Handmade in Việt Nam · Shipped worldwide" data-vi="Thủ công tại Việt Nam · Giao toàn cầu">Handmade in Việt Nam · Shipped worldwide</span>
+        <span data-en="Handmade in Việt Nam · Shipped worldwide" data-vi="Thủ công tại Việt Nam · Giao toàn cầu" data-de="Handgefertigt in Việt Nam · Weltweiter Versand" data-fr="Fait main au Việt Nam · Expédié dans le monde entier" data-es="Hecho a mano en Việt Nam · Enviado a todo el mundo">Handmade in Việt Nam · Shipped worldwide</span>
       </div>
     </div>
   </footer>
 
 <script>
-  // ---- bilingual toggle ----
   var body = document.body;
   var btn = document.getElementById('langBtn');
-  var lOn = document.getElementById('lOn');
-  var lOff = document.getElementById('lOff');
+  var menu = document.getElementById('langMenu');
+  var cur = document.getElementById('langCur');
+  var options = menu.querySelectorAll('li');
 
   function setLang(lang){
     body.setAttribute('data-lang', lang);
-    document.documentElement.lang = (lang === 'vi') ? 'vi' : 'en';
+    document.documentElement.lang = lang;
     var nodes = document.querySelectorAll('[data-en]');
     for (var i=0;i<nodes.length;i++){
       var val = nodes[i].getAttribute('data-' + lang);
       if (val !== null) nodes[i].innerHTML = val;
     }
-    if (lang === 'vi'){ lOn.textContent='VI'; lOff.textContent='EN'; }
-    else { lOn.textContent='EN'; lOff.textContent='VI'; }
+    cur.textContent = lang.toUpperCase();
+    options.forEach(function(o){ o.setAttribute('aria-selected', o.getAttribute('data-set') === lang ? 'true' : 'false'); });
   }
-  btn.addEventListener('click', function(){
-    setLang(body.getAttribute('data-lang') === 'en' ? 'vi' : 'en');
-  });
 
-  // ---- scroll reveal ----
+  function openMenu(open){
+    menu.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+  btn.addEventListener('click', function(e){ e.stopPropagation(); openMenu(!menu.classList.contains('open')); });
+  options.forEach(function(o){
+    o.addEventListener('click', function(){ setLang(o.getAttribute('data-set')); openMenu(false); });
+  });
+  document.addEventListener('click', function(e){ if(!menu.contains(e.target) && e.target !== btn) openMenu(false); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') openMenu(false); });
+
+  // scroll reveal
   if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
     var io = new IntersectionObserver(function(entries){
       entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
@@ -500,11 +512,9 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('in'); });
   }
 
-  // ---- placeholder buy handlers (wire to your checkout / cart) ----
+  // placeholder buy handlers — wire to your checkout / cart
   document.querySelectorAll('.pick').forEach(function(b){
-    b.addEventListener('click', function(){
-      document.getElementById('collection').scrollIntoView({behavior:'smooth'});
-    });
+    b.addEventListener('click', function(){ document.getElementById('collection').scrollIntoView({behavior:'smooth'}); });
   });
 </script>
 </body>
