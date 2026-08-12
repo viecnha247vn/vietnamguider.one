@@ -1,24 +1,53 @@
-import Link from "next/link";
+import { MDXRemote } from "next-mdx-remote/rsc";
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { getAllSlugs, getPostBySlug } from "@/lib/content";
+import RouteComparisonCard from "@/components/RouteComparisonCard";
+import HotelRecommendationCard from "@/components/HotelRecommendationCard";
 
-export default function HomePage() {
+// Components available inside every article
+const components = { RouteComparisonCard, HotelRecommendationCard };
+
+export function generateStaticParams() {
+  return getAllSlugs().map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) return {};
+  return { title: post.meta.title, description: post.meta.description };
+}
+
+export default async function ArticlePage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const post = getPostBySlug(slug);
+  if (!post) notFound();
+
   return (
-    <section className="mx-auto max-w-shell px-4 py-20 sm:px-6">
-      <p className="text-sm font-semibold uppercase tracking-wider text-gold">
-        Online Travel Concierge
-      </p>
-      <h1 className="mt-3 max-w-3xl font-display text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-        The easiest way for foreigners to travel Vietnam.
-      </h1>
-      <p className="mt-4 max-w-xl text-lg text-charcoal/80">
-        Routes, stays, eSIMs and ready-made itineraries — everything in one
-        place, without the hard sell.
-      </p>
-      <Link
-        href="/blog"
-        className="mt-8 inline-flex rounded-full bg-ink px-5 py-2.5 text-sm font-semibold text-eggshell hover:bg-ink-soft"
+    <div className="mx-auto max-w-3xl px-4 py-12 sm:px-6">
+      <article
+        className="prose prose-lg max-w-none
+          prose-headings:font-display prose-headings:text-ink
+          prose-p:text-charcoal/90
+          prose-a:text-gold prose-a:no-underline hover:prose-a:underline
+          prose-strong:text-ink
+          prose-li:text-charcoal/90"
       >
-        Read the guides
-      </Link>
-    </section>
+        <MDXRemote
+          source={post.content}
+          components={components}
+          options={{ blockJS: false }}
+        />
+      </article>
+    </div>
   );
 }
