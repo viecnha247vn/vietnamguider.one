@@ -29,6 +29,7 @@ export default function Header() {
   }, [mobileOpen]);
 
   return (
+    <>
     <header className="sticky top-0 z-40 border-b border-sage/20 bg-eggshell/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-shell items-center justify-between gap-4 px-4 sm:px-6">
         <Link
@@ -89,8 +90,9 @@ export default function Header() {
         </button>
       </div>
 
-      {mobileOpen && <MobileDrawer onClose={() => setMobileOpen(false)} />}
     </header>
+    {mobileOpen && <MobileDrawer onClose={() => setMobileOpen(false)} />}
+    </>
   );
 }
 
