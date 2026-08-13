@@ -2,10 +2,18 @@ import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { getAllSlugs, getPostBySlug } from "@/lib/content";
-import RouteBoard, { SayIt } from "@/components/RouteBoard";
-import StayLedger from "@/components/StayLedger";
+import RouteBoard, { SayIt, RouteComparisonCard } from "@/components/RouteBoard";
+import StayLedger, { HotelRecommendationCard } from "@/components/StayLedger";
 
-const components = { RouteBoard, SayIt, StayLedger };
+// Tên mới + tên cũ, để 9 bài chưa chuyển vẫn render.
+// Bỏ hai dòng cuối sau khi đã đổi hết thẻ trong content/*.mdx.
+const components = {
+  RouteBoard,
+  SayIt,
+  StayLedger,
+  RouteComparisonCard,
+  HotelRecommendationCard,
+};
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -52,7 +60,7 @@ export default async function ArticlePage({
 
       <header className="van-coi bg-men py-9 text-giay">
         <div className="relative z-[1] mx-auto max-w-[760px] px-5">
-          <p className="flex items-center gap-2 font-sig text-[10.5px] font-semibold uppercase tracking-[.18em] text-nghe">
+          <p className="flex flex-wrap items-center gap-2 font-sig text-[10.5px] font-semibold uppercase tracking-[.18em] text-nghe">
             <span className="block h-2 w-2 bg-son shadow-khacnho" aria-hidden />
             {post.meta.category}
             {post.meta.checked && (
@@ -71,6 +79,7 @@ export default async function ArticlePage({
         <article
           className="prose prose-lg max-w-none
             prose-headings:font-sig prose-headings:uppercase prose-headings:tracking-[.16em]
+            prose-h1:hidden
             prose-h2:text-[13px] prose-h2:font-extrabold prose-h2:text-men
             prose-h2:border-b-2 prose-h2:border-muc prose-h2:pb-2 prose-h2:mt-10
             prose-p:text-muc/90 prose-li:text-muc/90
