@@ -1,19 +1,30 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { getAllSlugs, getPostBySlug } from "@/lib/content";
-import RouteBoard, { SayIt, RouteComparisonCard } from "@/components/RouteBoard";
-import StayLedger, { HotelRecommendationCard } from "@/components/StayLedger";
+import RouteBoard, { SayIt, type RouteBoardProps } from "@/components/RouteBoard";
+import StayLedger, { type StayLedgerProps } from "@/components/StayLedger";
 
-// Tên mới + tên cũ, để 9 bài chưa chuyển vẫn render.
-// Bỏ hai dòng cuối sau khi đã đổi hết thẻ trong content/*.mdx.
-const components = {
-  RouteBoard,
-  SayIt,
-  StayLedger,
-  RouteComparisonCard,
-  HotelRecommendationCard,
-};
+type RouteProps = Omit<RouteBoardProps, "slug">;
+type StayProps = Omit<StayLedgerProps, "slug">;
+
+/**
+ * Map component cho MDX. Nhận slug để bơm xuống các thẻ — nút "Lưu" cần
+ * một id ổn định (route:<slug>:<tier>) mà bài viết không phải tự khai báo.
+ *
+ * Giữ cả tên cũ (RouteComparisonCard / HotelRecommendationCard) để 9 bài
+ * chưa chuyển cú pháp vẫn render. Bỏ hai dòng đó khi đã chuyển hết.
+ */
+function mdxComponents(slug: string) {
+  return {
+    SayIt,
+    RouteBoard: (p: RouteProps) => <RouteBoard {...p} slug={slug} />,
+    RouteComparisonCard: (p: RouteProps) => <RouteBoard {...p} slug={slug} />,
+    StayLedger: (p: StayProps) => <StayLedger {...p} slug={slug} />,
+    HotelRecommendationCard: (p: StayProps) => <StayLedger {...p} slug={slug} />,
+  };
+}
 
 export function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -72,6 +83,19 @@ export default async function ArticlePage({
           <h1 className="mt-3 font-doc text-[30px] font-semibold leading-[1.18] sm:text-[40px]">
             {post.meta.title}
           </h1>
+
+          {/*
+            Công khai hoa hồng — MỘT dòng, đặt TRƯỚC mọi link đối tác trên trang.
+            Đây là mức tối thiểu mà điều khoản của Agoda / Booking / 12Go yêu cầu.
+            Đừng xoá: vi phạm thì tài khoản bị khoá và mất luôn hoa hồng chưa trả.
+            Muốn kín đáo hơn thì chỉnh cỡ chữ hoặc màu, đừng bỏ hẳn.
+          */}
+          <p className="mt-3 font-so text-[10.5px] leading-relaxed tracking-[.03em] text-men-nhat">
+            Some booking links here earn us a commission at no extra cost to you.{" "}
+            <Link href="/disclosure" className="underline underline-offset-2 hover:text-nghe">
+              How this works
+            </Link>
+          </p>
         </div>
       </header>
 
@@ -98,7 +122,7 @@ export default async function ArticlePage({
           */}
           <MDXRemote
             source={post.content}
-            components={components}
+            components={mdxComponents(slug)}
             options={{ blockJS: false }}
           />
         </article>

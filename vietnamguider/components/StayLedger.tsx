@@ -1,3 +1,5 @@
+import SaveButton from "@/components/SaveButton";
+
 /** Chấp nhận cả nhãn mới (vi) lẫn nhãn cũ (en). */
 type Segment = "re" | "vua" | "sang" | "budget" | "midrange" | "luxury";
 
@@ -24,17 +26,17 @@ const LABEL: Record<Segment, string> = {
 };
 
 /** Sổ chỗ ở — cùng ngôn ngữ với Bảng tuyến, dạng dòng kẻ chứ không phải thẻ. */
-export default function StayLedger({
-  title = "Ngủ ở đâu",
-  note,
-  stays,
-  hotels,
-}: {
+export type StayLedgerProps = {
   title?: string;
   note?: string;
   stays?: Stay[];
   hotels?: Stay[]; // tên prop cũ
-}) {
+  slug?: string;
+};
+
+export default function StayLedger({
+  title = "Ngủ ở đâu", note, stays, hotels, slug,
+}: StayLedgerProps) {
   const list = stays ?? hotels ?? [];
 
   return (
@@ -75,12 +77,25 @@ export default function StayLedger({
             >
               {s.ctaLabel} →
             </a>
+            {slug && (
+              <SaveButton
+                item={{
+                  id: `stay:${slug}:${s.name}`,
+                  kind: "stay",
+                  title: s.name,
+                  sub: s.area,
+                  price: s.vnd ?? s.price,
+                  href: s.ctaHref,
+                  source: slug,
+                }}
+              />
+            )}
           </li>
         ))}
       </ul>
 
       <p className="bg-giay-sau px-5 py-3 font-so text-[10.5px] tracking-[.03em] text-muc/60">
-        GIÁ SỐNG HIỆN Ở TRANG ĐẶT PHÒNG · CÓ HOA HỒNG · BẠN KHÔNG TRẢ THÊM
+        GIÁ SỐNG HIỆN Ở TRANG ĐẶT PHÒNG
       </p>
     </div>
   );

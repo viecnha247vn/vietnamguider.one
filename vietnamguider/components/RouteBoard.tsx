@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import SaveButton from "@/components/SaveButton";
 
 /** Chấp nhận cả nhãn mới (vi) lẫn nhãn cũ (en) để bài .mdx cũ không vỡ. */
 type Tier = "re" | "de" | "em" | "cheapest" | "convenient" | "comfortable";
@@ -33,17 +34,20 @@ const TIER: Record<Tier, string> = {
  * Dựng theo tấm biển tuyến sơn tay trước đầu xe khách.
  * km / hours / checked là tuỳ chọn: bài chưa cập nhật vẫn render bình thường.
  */
-export default function RouteBoard({
-  from, to, km, hours, road, checked, options,
-}: {
+export type RouteBoardProps = {
   from: string;
   to: string;
+  options: Option[];
   km?: number;
   hours?: string;
   road?: string;
   checked?: string;
-  options: Option[];
-}) {
+  slug?: string;
+};
+
+export default function RouteBoard({
+  from, to, km, hours, road, checked, options, slug,
+}: RouteBoardProps) {
   const meta = [
     km ? `${km} KM` : null,
     hours ? `${hours} GIỜ` : null,
@@ -104,13 +108,25 @@ export default function RouteBoard({
             >
               {opt.ctaLabel} →
             </a>
+            {slug && (
+              <SaveButton
+                item={{
+                  id: `route:${slug}:${opt.tier}`,
+                  kind: "route",
+                  title: opt.name,
+                  sub: `${from} → ${to}`,
+                  price: opt.vnd ?? opt.price,
+                  href: opt.ctaHref,
+                  source: slug,
+                }}
+              />
+            )}
           </div>
         ))}
       </div>
 
-      <div className="flex flex-wrap justify-between gap-3 bg-giay-sau px-5 py-3 font-so text-[10.5px] tracking-[.03em] text-muc/60">
-        <span>GIÁ THAM KHẢO · NHÀ XE ĐẶT GIÁ</span>
-        <span>CÓ HOA HỒNG · BẠN KHÔNG TRẢ THÊM</span>
+      <div className="bg-giay-sau px-5 py-3 font-so text-[10.5px] tracking-[.03em] text-muc/60">
+        GIÁ THAM KHẢO · NHÀ XE ĐẶT GIÁ{checked ? ` · KIỂM TRA ${checked}` : ""}
       </div>
     </div>
   );

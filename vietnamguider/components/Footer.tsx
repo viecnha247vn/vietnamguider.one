@@ -9,12 +9,12 @@ export default function Footer() {
             Vietnam Guider
           </p>
           <p className="mt-2 font-so text-[10.5px] leading-[1.6] tracking-[.03em] text-men-nhat">
-            Some links earn us a commission. It never changes your price, and it never decides
-            the order of a page — the cheapest option is listed first because it is the cheapest.
+            Route guides written from the pavement. Prices in dong, re-checked monthly.
           </p>
         </div>
         <nav className="font-sig text-[11.5px] uppercase tracking-[.12em]">
           <Link href="/blog" className="block py-1 hover:text-nghe">Route guides</Link>
+          <Link href="/destinations" className="block py-1 hover:text-nghe">Destinations</Link>
           <Link href="/disclosure" className="block py-1 hover:text-nghe">How we make money</Link>
           <Link href="/my-trip" className="block py-1 hover:text-nghe">Chuyến của tôi</Link>
         </nav>

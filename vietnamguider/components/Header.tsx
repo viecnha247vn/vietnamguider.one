@@ -29,7 +29,7 @@ export default function Header() {
   return (
     <>
       <header className="van-coi sticky top-0 z-40 border-b-[3px] border-nghe bg-men">
-        <div className="relative z-[1] mx-auto flex h-[62px] max-w-shell items-center justify-between gap-4 px-5">
+        <div className="relative z-[1] mx-auto flex h-[62px] max-w-[1180px] items-center justify-between gap-3 px-5">
           <Link href="/" onClick={() => setMobileOpen(false)} className="flex shrink-0 items-baseline gap-2.5 text-giay">
             <span className="font-sig text-[19px] font-extrabold uppercase leading-none tracking-[-.02em]">
               Vietnam Guider
@@ -40,7 +40,7 @@ export default function Header() {
 
           <nav aria-label="Primary" className="hidden lg:block" onMouseLeave={() => setOpenMenu(null)}>
             <ul className="flex items-center gap-1">
-              {NAV.map((item) => (
+              {NAV.filter((i) => i.href !== "/my-trip").map((item) => (
                 <DesktopItem
                   key={item.label}
                   item={item}
@@ -81,13 +81,14 @@ function DesktopItem({
   item, open, onOpen, onToggle,
 }: { item: NavItem; open: boolean; onOpen: () => void; onToggle: () => void }) {
   const base =
-    "px-2.5 py-2 font-sig text-[12px] font-semibold uppercase tracking-[.1em] transition-colors";
+    "px-2 py-2 font-sig text-[11px] font-semibold uppercase tracking-[.06em] whitespace-nowrap transition-colors";
 
   if (!item.columns) {
     return (
       <li>
-        <Link href={item.href} className={`${base} text-giay/85 hover:text-nghe`}>
+        <Link href={item.href} className={`${base} inline-flex items-center gap-1 text-giay/85 hover:text-nghe`}>
           {item.label}
+          {item.soon && <Soon />}
         </Link>
       </li>
     );
@@ -103,12 +104,13 @@ function DesktopItem({
         className={`${base} flex items-center gap-1 ${open ? "text-nghe" : "text-giay/85 hover:text-nghe"}`}
       >
         {item.label}
-        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
+        {item.soon && <Soon />}
+        <ChevronDown className={`h-3 w-3 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
       </button>
 
       {open && (
         <div className="absolute inset-x-0 top-full">
-          <div className="mx-auto max-w-shell px-5">
+          <div className="mx-auto max-w-[1180px] px-5">
             <div className="border-2 border-muc bg-giay p-6 shadow-khac">
               <div className="mb-5 flex items-center justify-between border-b-2 border-muc pb-3">
                 <p className="font-sig text-[12px] font-extrabold uppercase tracking-[.16em] text-men">
@@ -187,8 +189,9 @@ function MobileItem({ item, onNavigate }: { item: NavItem; onNavigate: () => voi
   if (!item.columns) {
     return (
       <li className="border-b border-dashed border-muc/30">
-        <Link href={item.href} onClick={onNavigate} className="block py-3.5 font-sig text-[13px] font-semibold uppercase tracking-[.1em] text-muc">
+        <Link href={item.href} onClick={onNavigate} className="flex items-center gap-2 py-3.5 font-sig text-[13px] font-semibold uppercase tracking-[.1em] text-muc">
           {item.label}
+          {item.soon && <Soon dark />}
         </Link>
       </li>
     );
@@ -225,5 +228,17 @@ function MobileItem({ item, onNavigate }: { item: NavItem; onNavigate: () => voi
         </div>
       )}
     </li>
+  );
+}
+
+/** Dấu cho mục chưa có nội dung. Nhỏ, không cướp sự chú ý, nhưng trung thực. */
+function Soon({ dark = false }: { dark?: boolean }) {
+  return (
+    <span
+      title="Đang viết"
+      className={`font-so text-[9px] uppercase tracking-[.08em] ${dark ? "text-son" : "text-nghe/70"}`}
+    >
+      sắp có
+    </span>
   );
 }
