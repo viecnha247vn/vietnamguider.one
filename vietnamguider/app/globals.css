@@ -38,6 +38,15 @@
 }
 
 @layer components {
+  /* Dải nav cuộn ngang: ẩn thanh cuộn, và CHẶN cuộn lan ra cả trang. */
+  .nav-scroll {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+  }
+  .nav-scroll::-webkit-scrollbar { display: none; }
+
   /* Vân cói / nón lá cho các mảng màu men đặc. */
   .van-coi { position: relative; }
   .van-coi::after {

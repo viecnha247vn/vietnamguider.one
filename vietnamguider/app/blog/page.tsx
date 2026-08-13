@@ -39,7 +39,7 @@ export default function BlogIndex() {
                     {post.category}
                   </span>
                   <span className="so-lieu font-so text-[11px] uppercase tracking-[.06em] text-tro">
-                    {post.checked ? `KIỂM TRA ${post.checked}` : `${post.readMinutes} PHÚT`}
+                    {post.checked ? `CHECKED ${post.checked}` : `${post.readMinutes} MIN`}
                   </span>
                 </div>
                 <h2 className="mt-1.5 font-doc text-[21px] font-semibold group-hover:text-son">

@@ -16,7 +16,7 @@ export default function Footer() {
           <Link href="/blog" className="block py-1 hover:text-nghe">Route guides</Link>
           <Link href="/destinations" className="block py-1 hover:text-nghe">Destinations</Link>
           <Link href="/disclosure" className="block py-1 hover:text-nghe">How we make money</Link>
-          <Link href="/my-trip" className="block py-1 hover:text-nghe">Chuyến của tôi</Link>
+          <Link href="/my-trip" className="block py-1 hover:text-nghe">My Trip</Link>
         </nav>
       </div>
     </footer>

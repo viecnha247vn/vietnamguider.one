@@ -76,7 +76,7 @@ export default async function ArticlePage({
             {post.meta.category}
             {post.meta.checked && (
               <span className="so-lieu font-so text-[10.5px] tracking-[.05em] text-men-nhat">
-                · KIỂM TRA {post.meta.checked}
+                · CHECKED {post.meta.checked}
               </span>
             )}
           </p>

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/destinations" },
 };
 
-const REGIONS = ["Miền Bắc", "Miền Trung", "Miền Nam"] as const;
+const REGIONS = ["The North", "Central", "The South"] as const;
 
 export default function DestinationsPage() {
   return (
@@ -47,7 +47,7 @@ export default function DestinationsPage() {
                       {d.name}
                     </span>
                     <span className="font-so text-[11px] uppercase tracking-[.06em] text-tro">
-                      Cách đi →
+                      How to get there →
                     </span>
                   </Link>
                 </li>

@@ -43,7 +43,7 @@ function MyTrip() {
       setCopied(true);
       setTimeout(() => setCopied(false), 2500);
     } catch {
-      window.prompt("Sao chép link này:", url);
+      window.prompt("Copy this link:", url);
     }
   };
 
@@ -64,15 +64,15 @@ function MyTrip() {
         <div className="relative z-[1] mx-auto max-w-shell px-5">
           <p className="flex items-center gap-2 font-sig text-[11px] font-semibold uppercase tracking-[.2em] text-nghe">
             <span className="block h-[9px] w-[9px] bg-son shadow-khacnho" aria-hidden />
-            {shared ? "Lịch trình được chia sẻ" : "Chuyến của tôi"}
+            {shared ? "A shared plan" : "My Trip"}
           </p>
           <h1 className="mt-3 font-doc text-[32px] font-semibold leading-tight sm:text-[42px]">
-            {shared ? "Ai đó đã gửi bạn lịch trình này" : "Chuyến của tôi"}
+            {shared ? "Someone sent you this plan" : "My Trip"}
           </h1>
           <p className="mt-3 max-w-[48ch] text-[16px] leading-relaxed text-giay/80">
             {shared
-              ? "Bạn có thể lưu về máy mình rồi sửa tuỳ ý."
-              : "Lưu ngay trên máy bạn, không cần tài khoản. Xoá lịch sử trình duyệt là mất, nên chia sẻ link cho chính mình nếu muốn giữ lâu."}
+              ? "Save it to your own device and change anything you like."
+              : "Saved on this device, no account needed. Clearing your browser data wipes it, so send yourself the share link if you want it to last."}
           </p>
         </div>
       </section>
@@ -80,23 +80,23 @@ function MyTrip() {
       <div className="mx-auto max-w-shell px-5 py-10">
         {list.length === 0 ? (
           <>
-            <h2 className="font-doc text-[24px] font-semibold">Chưa có gì ở đây</h2>
+            <h2 className="font-doc text-[24px] font-semibold">Nothing saved yet</h2>
             <p className="mt-2 max-w-[46ch] text-[16.5px] leading-relaxed text-muc/80">
-              Mở một tuyến bất kỳ và bấm <strong>Lưu</strong> ở lựa chọn bạn thích — nó
-              sẽ nằm lại đây thành lịch trình của bạn.
+              Open any route guide and hit <strong>Save</strong> on the option you like —
+              it will sit here as your plan.
             </p>
             <Link
               href="/blog"
               className="mt-7 inline-block bg-men px-5 py-3 font-sig text-[12px] font-semibold uppercase tracking-[.12em] text-giay shadow-khac"
             >
-              Xem các tuyến →
+              See the routes →
             </Link>
           </>
         ) : (
           <>
             <div className="flex flex-wrap items-end justify-between gap-3 border-b-2 border-muc pb-2">
               <h2 className="font-sig text-[13px] font-extrabold uppercase tracking-[.16em] text-men">
-                {list.length} mục đã lưu
+                {list.length} saved
               </h2>
               {!shared && (
                 <button
@@ -104,7 +104,7 @@ function MyTrip() {
                   onClick={share}
                   className="bg-nghe px-4 py-2 font-sig text-[11.5px] font-semibold uppercase tracking-[.1em] text-men-sau shadow-khac"
                 >
-                  {copied ? "Đã chép link ✓" : "Chia sẻ lịch trình"}
+                  {copied ? "Link copied ✓" : "Share this plan"}
                 </button>
               )}
             </div>
@@ -115,7 +115,7 @@ function MyTrip() {
                   <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
                     <div>
                       <p className="font-sig text-[10.5px] font-semibold uppercase tracking-[.16em] text-son">
-                        {i.kind === "route" ? "Di chuyển" : "Chỗ ở"}
+                        {i.kind === "route" ? "Getting there" : "Staying"}
                       </p>
                       <p className="mt-1 font-doc text-[19px] font-semibold">{i.title}</p>
                       {i.sub && (
@@ -134,13 +134,13 @@ function MyTrip() {
                       rel="nofollow sponsored noopener"
                       className="bg-men px-4 py-2 font-sig text-[11.5px] font-semibold uppercase tracking-[.1em] text-giay shadow-khac"
                     >
-                      Đặt chỗ →
+                      Book →
                     </a>
                     <Link
                       href={`/blog/${i.source}`}
                       className="border-[1.5px] border-muc px-3 py-2 font-sig text-[11px] font-semibold uppercase tracking-[.1em]"
                     >
-                      Xem lại bài
+                      Back to guide
                     </Link>
                     {!shared && (
                       <button
@@ -148,7 +148,7 @@ function MyTrip() {
                         onClick={() => remove(i.id)}
                         className="px-3 py-2 font-sig text-[11px] font-semibold uppercase tracking-[.1em] text-tro hover:text-son"
                       >
-                        Bỏ
+                        Remove
                       </button>
                     )}
                   </div>
@@ -162,7 +162,7 @@ function MyTrip() {
                 onClick={adoptShared}
                 className="mt-7 bg-nghe px-5 py-3 font-sig text-[12px] font-semibold uppercase tracking-[.12em] text-men-sau shadow-khac"
               >
-                Lưu lịch trình này về máy tôi →
+                Save this plan to my device →
               </button>
             )}
           </>

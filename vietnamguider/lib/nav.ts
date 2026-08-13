@@ -15,16 +15,16 @@ export type NavItem = {
 
 /** 10 điểm đến rút từ chính 10 bài đã có. Không bịa. */
 export const DESTINATIONS = [
-  { name: "Sa Pa",      region: "Miền Bắc",  href: "/blog/hanoi-to-sa-pa" },
-  { name: "Ninh Bình",  region: "Miền Bắc",  href: "/blog/hanoi-to-ninh-binh" },
-  { name: "Hà Giang",   region: "Miền Bắc",  href: "/blog/hanoi-to-ha-giang" },
-  { name: "Cát Bà",     region: "Miền Bắc",  href: "/blog/hanoi-to-cat-ba" },
-  { name: "Mai Châu",   region: "Miền Bắc",  href: "/blog/hanoi-to-mai-chau" },
-  { name: "Hội An",     region: "Miền Trung", href: "/blog/da-nang-to-hoi-an" },
-  { name: "Huế",        region: "Miền Trung", href: "/blog/da-nang-to-hue" },
-  { name: "Đà Lạt",     region: "Miền Nam",  href: "/blog/ho-chi-minh-city-to-da-lat" },
-  { name: "Mũi Né",     region: "Miền Nam",  href: "/blog/ho-chi-minh-city-to-mui-ne" },
-  { name: "Phú Quốc",   region: "Miền Nam",  href: "/blog/ho-chi-minh-city-to-phu-quoc" },
+  { name: "Sa Pa",      region: "The North",  href: "/blog/hanoi-to-sa-pa" },
+  { name: "Ninh Bình",  region: "The North",  href: "/blog/hanoi-to-ninh-binh" },
+  { name: "Hà Giang",   region: "The North",  href: "/blog/hanoi-to-ha-giang" },
+  { name: "Cát Bà",     region: "The North",  href: "/blog/hanoi-to-cat-ba" },
+  { name: "Mai Châu",   region: "The North",  href: "/blog/hanoi-to-mai-chau" },
+  { name: "Hội An",     region: "Central", href: "/blog/da-nang-to-hoi-an" },
+  { name: "Huế",        region: "Central", href: "/blog/da-nang-to-hue" },
+  { name: "Đà Lạt",     region: "The South",  href: "/blog/ho-chi-minh-city-to-da-lat" },
+  { name: "Mũi Né",     region: "The South",  href: "/blog/ho-chi-minh-city-to-mui-ne" },
+  { name: "Phú Quốc",   region: "The South",  href: "/blog/ho-chi-minh-city-to-phu-quoc" },
 ];
 
 const byRegion = (r: string): NavLink[] =>
@@ -35,9 +35,9 @@ export const NAV: NavItem[] = [
     label: "Destinations",
     href: "/destinations",
     columns: [
-      { heading: "Miền Bắc", links: byRegion("Miền Bắc") },
-      { heading: "Miền Trung", links: byRegion("Miền Trung") },
-      { heading: "Miền Nam", links: byRegion("Miền Nam") },
+      { heading: "The North", links: byRegion("Miền Bắc") },
+      { heading: "Central", links: byRegion("Miền Trung") },
+      { heading: "The South", links: byRegion("Miền Nam") },
     ],
   },
   { label: "Plan Your Trip", href: "/plan", soon: true },
@@ -47,7 +47,7 @@ export const NAV: NavItem[] = [
     href: "/blog",
     columns: [
       {
-        heading: "Từ Hà Nội",
+        heading: "From Hà Nội",
         links: [
           { label: "Hà Nội → Sa Pa", href: "/blog/hanoi-to-sa-pa" },
           { label: "Hà Nội → Ninh Bình", href: "/blog/hanoi-to-ninh-binh" },
@@ -57,14 +57,14 @@ export const NAV: NavItem[] = [
         ],
       },
       {
-        heading: "Từ Đà Nẵng",
+        heading: "From Đà Nẵng",
         links: [
           { label: "Đà Nẵng → Hội An", href: "/blog/da-nang-to-hoi-an" },
           { label: "Đà Nẵng → Huế", href: "/blog/da-nang-to-hue" },
         ],
       },
       {
-        heading: "Từ TP.HCM",
+        heading: "From Hồ Chí Minh City",
         links: [
           { label: "TP.HCM → Đà Lạt", href: "/blog/ho-chi-minh-city-to-da-lat" },
           { label: "TP.HCM → Mũi Né", href: "/blog/ho-chi-minh-city-to-mui-ne" },

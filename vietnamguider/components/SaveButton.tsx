@@ -23,7 +23,7 @@ export default function SaveButton({ item }: { item: TripItem }) {
         saved ? "bg-muc text-giay" : "bg-transparent text-muc hover:bg-muc/5"
       }`}
     >
-      {saved ? "Đã lưu ✓" : "Lưu"}
+      {saved ? "Saved ✓" : "Save"}
     </button>
   );
 }

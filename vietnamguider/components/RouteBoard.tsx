@@ -21,12 +21,12 @@ export type Option = {
 };
 
 const TIER: Record<Tier, string> = {
-  re: "Rẻ nhất",
-  de: "Dễ nhất",
-  em: "Êm nhất",
-  cheapest: "Rẻ nhất",
-  convenient: "Dễ nhất",
-  comfortable: "Êm nhất",
+  re: "Cheapest",
+  de: "Easiest",
+  em: "Comfiest",
+  cheapest: "Cheapest",
+  convenient: "Easiest",
+  comfortable: "Comfiest",
 };
 
 /**
@@ -79,7 +79,7 @@ export default function RouteBoard({
               {/* Con dấu lệch bản in — nhắc tranh khắc gỗ, thay cho icon kho */}
               <span className="block h-2 w-2 flex-none bg-son shadow-khacnho" aria-hidden />
               {TIER[opt.tier] ?? opt.tier}
-              {opt.pick && <span className="text-tro">· chúng tôi chọn</span>}
+              {opt.pick && <span className="text-tro">· our pick</span>}
             </p>
 
             <p className="mt-2 font-doc text-[20px] font-semibold">{opt.name}</p>
@@ -92,7 +92,7 @@ export default function RouteBoard({
             </p>
 
             {opt.pickup && (
-              <p className="mt-2 font-so text-[11.5px] leading-relaxed text-tro">ĐÓN: {opt.pickup}</p>
+              <p className="mt-2 font-so text-[11.5px] leading-relaxed text-tro">PICKUP: {opt.pickup}</p>
             )}
             {(opt.reality ?? opt.detail) && (
               <p className="mt-2.5 text-[15.5px] leading-[1.62] text-muc/85">{opt.reality ?? opt.detail}</p>
@@ -126,7 +126,7 @@ export default function RouteBoard({
       </div>
 
       <div className="bg-giay-sau px-5 py-3 font-so text-[10.5px] tracking-[.03em] text-muc/60">
-        GIÁ THAM KHẢO · NHÀ XE ĐẶT GIÁ{checked ? ` · KIỂM TRA ${checked}` : ""}
+        INDICATIVE PRICES · SET BY THE OPERATOR{checked ? ` · CHECKED ${checked}` : ""}
       </div>
     </div>
   );
@@ -139,7 +139,7 @@ export function SayIt({
   return (
     <aside className="not-prose my-8 border-l-[3px] border-son bg-son/[.05] px-5 py-4">
       <p className="font-sig text-[10.5px] font-semibold uppercase tracking-[.16em] text-son">
-        Nói thế nào
+        How to say it
       </p>
       <p className="mt-2 font-doc text-[19px] italic text-men">{vi}</p>
       <p className="font-so text-[12.5px] text-tro">{phonetic}</p>

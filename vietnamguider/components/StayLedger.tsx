@@ -17,12 +17,12 @@ export type Stay = {
 };
 
 const LABEL: Record<Segment, string> = {
-  re: "Rẻ",
-  vua: "Vừa tiền",
-  sang: "Sang",
-  budget: "Rẻ",
-  midrange: "Vừa tiền",
-  luxury: "Sang",
+  re: "Budget",
+  vua: "Mid-range",
+  sang: "Top end",
+  budget: "Budget",
+  midrange: "Mid-range",
+  luxury: "Top end",
 };
 
 /** Sổ chỗ ở — cùng ngôn ngữ với Bảng tuyến, dạng dòng kẻ chứ không phải thẻ. */
@@ -35,7 +35,7 @@ export type StayLedgerProps = {
 };
 
 export default function StayLedger({
-  title = "Ngủ ở đâu", note, stays, hotels, slug,
+  title = "Where to stay", note, stays, hotels, slug,
 }: StayLedgerProps) {
   const list = stays ?? hotels ?? [];
 
@@ -95,7 +95,7 @@ export default function StayLedger({
       </ul>
 
       <p className="bg-giay-sau px-5 py-3 font-so text-[10.5px] tracking-[.03em] text-muc/60">
-        GIÁ SỐNG HIỆN Ở TRANG ĐẶT PHÒNG
+        LIVE PRICES ON THE BOOKING SITE
       </p>
     </div>
   );

@@ -47,7 +47,7 @@ export default function HubPage({
 
       <div className="mx-auto max-w-shell px-5 py-10">
         <h2 className="border-b-2 border-muc pb-2 font-sig text-[13px] font-extrabold uppercase tracking-[.16em] text-men">
-          Đang viết
+          In progress
         </h2>
         <ul className="mt-1">
           {workingOn.map((w) => (
@@ -61,7 +61,7 @@ export default function HubPage({
         {meanwhile && meanwhile.length > 0 && (
           <>
             <h2 className="mt-10 border-b-2 border-muc pb-2 font-sig text-[13px] font-extrabold uppercase tracking-[.16em] text-men">
-              Trong lúc chờ
+              What we have now
             </h2>
             <div className="mt-4 flex flex-wrap gap-3">
               {meanwhile.map((m) => (

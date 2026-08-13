@@ -18,7 +18,7 @@ export default function DisclosurePage() {
         <p>
           Commission never decides what we recommend or how a page is ordered. On every route
           board the cheapest option is listed first because it is the cheapest, and the option
-          marked <em>chúng tôi chọn</em> is the one we would book ourselves — sometimes that is
+          marked <em>our pick</em> is the one we would book ourselves — sometimes that is
           the option paying us least.
         </p>
         <p>
