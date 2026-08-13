@@ -1,74 +1,50 @@
-// Single source of truth for the header navigation.
-// Both the desktop menu and the mobile drawer render from this array.
-// To rename or add a menu item, edit ONLY this file.
+// Nguồn duy nhất cho thanh điều hướng.
+// QUY TẮC: chỉ đưa vào đây những trang ĐÃ TỒN TẠI.
+// Mỗi mục thừa là một lỗi 404 mà Google sẽ ghi nhận.
 
 export type NavLink = { label: string; href: string; note?: string };
 export type NavColumn = { heading: string; links: NavLink[] };
-export type NavItem = {
-  label: string;
-  href: string;
-  // If `columns` is present the item opens a mega menu; otherwise it is a plain link.
-  columns?: NavColumn[];
-};
+export type NavItem = { label: string; href: string; columns?: NavColumn[] };
 
 export const NAV: NavItem[] = [
   {
-    label: "Destinations",
-    href: "/destinations",
+    label: "Getting Around",
+    href: "/blog",
     columns: [
       {
-        heading: "North",
+        heading: "Miền Bắc",
         links: [
-          { label: "Hanoi", href: "/destinations/hanoi" },
-          { label: "Ha Long Bay", href: "/destinations/ha-long-bay" },
-          { label: "Ninh Binh", href: "/destinations/ninh-binh" },
-          { label: "Sa Pa", href: "/destinations/sa-pa" },
+          { label: "Hà Nội → Sa Pa", href: "/blog/hanoi-to-sa-pa" },
+          { label: "Hà Nội → Ninh Bình", href: "/blog/hanoi-to-ninh-binh" },
+          { label: "Hà Nội → Hà Giang", href: "/blog/hanoi-to-ha-giang" },
+          { label: "Hà Nội → Cát Bà", href: "/blog/hanoi-to-cat-ba" },
+          { label: "Hà Nội → Mai Châu", href: "/blog/hanoi-to-mai-chau" },
         ],
       },
       {
-        heading: "Central",
+        heading: "Miền Trung",
         links: [
-          { label: "Hoi An", href: "/destinations/hoi-an" },
-          { label: "Da Nang", href: "/destinations/da-nang" },
-          { label: "Hue", href: "/destinations/hue" },
+          { label: "Đà Nẵng → Hội An", href: "/blog/da-nang-to-hoi-an" },
+          { label: "Đà Nẵng → Huế", href: "/blog/da-nang-to-hue" },
         ],
       },
       {
-        heading: "South",
+        heading: "Miền Nam",
         links: [
-          { label: "Ho Chi Minh City", href: "/destinations/ho-chi-minh-city" },
-          { label: "Phu Quoc", href: "/destinations/phu-quoc" },
-          { label: "Mekong Delta", href: "/destinations/mekong-delta" },
+          { label: "TP.HCM → Đà Lạt", href: "/blog/ho-chi-minh-city-to-da-lat" },
+          { label: "TP.HCM → Mũi Né", href: "/blog/ho-chi-minh-city-to-mui-ne" },
+          { label: "TP.HCM → Phú Quốc", href: "/blog/ho-chi-minh-city-to-phu-quoc" },
         ],
       },
     ],
   },
-  {
-    label: "Plan Your Trip",
-    href: "/plan",
-    columns: [
-      {
-        heading: "Itineraries",
-        links: [
-          { label: "7 days in Vietnam", href: "/plan/itineraries/7-days" },
-          { label: "10 days in Vietnam", href: "/plan/itineraries/10-days" },
-          { label: "14 days in Vietnam", href: "/plan/itineraries/14-days" },
-        ],
-      },
-      {
-        heading: "Tools & Guides",
-        links: [
-          { label: "Vietnam Trip Builder", href: "/trip-builder", note: "Build your own itinerary" },
-          { label: "Digital Planners & Kits", href: "/plan/planners" },
-        ],
-      },
-    ],
-  },
-  { label: "Things to Do", href: "/things-to-do" },
-  { label: "Getting Around", href: "/blog" },
-  { label: "Where to Stay", href: "/stay" },
-  { label: "Food", href: "/food" },
-  { label: "Vietnam Visa", href: "/visa" },
-  { label: "Travel Tools", href: "/tools" },
-  { label: "Deals", href: "/deals" },
+  { label: "All guides", href: "/blog" },
 ];
+
+// ─────────────────────────────────────────────────────────────
+// Thêm lại khi trang tương ứng đã tồn tại:
+//   { label: "Destinations",  href: "/destinations" }
+//   { label: "Plan Your Trip", href: "/plan" }
+//   { label: "Where to Stay",  href: "/stay" }
+//   { label: "Vietnam Visa",   href: "/visa" }
+//   { label: "Deals",          href: "/deals" }

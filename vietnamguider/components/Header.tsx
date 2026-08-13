@@ -1,119 +1,92 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { Menu, X, ChevronDown, MapPin, Bookmark } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { NAV, type NavItem } from "@/lib/nav";
 
+/**
+ * Thanh điều hướng dựng theo biển men ở bến xe:
+ * một khối màu đặc, kẻ chỉ nghệ dưới chân, góc vuông, không đổ bóng mờ.
+ */
 export default function Header() {
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === "Escape") {
-        setOpenMenu(null);
-        setMobileOpen(false);
-      }
-    }
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") { setOpenMenu(null); setMobileOpen(false); }
+    };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, []);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => {
-      document.body.style.overflow = "";
-    };
+    return () => { document.body.style.overflow = ""; };
   }, [mobileOpen]);
 
   return (
     <>
-    <header className="sticky top-0 z-40 border-b border-sage/20 bg-eggshell/90 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-shell items-center justify-between gap-4 px-4 sm:px-6">
-        <Link
-          href="/"
-          className="flex shrink-0 items-center gap-2 text-ink"
-          onClick={() => setMobileOpen(false)}
-        >
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-ink text-eggshell">
-            <MapPin className="h-4 w-4" aria-hidden />
-          </span>
-          <span className="font-display text-lg font-semibold leading-none tracking-tight">
-            Vietnam Guider
-          </span>
-        </Link>
-
-        <nav
-          ref={navRef}
-          aria-label="Primary"
-          className="hidden lg:block"
-          onMouseLeave={() => setOpenMenu(null)}
-          onBlur={(e) => {
-            if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpenMenu(null);
-          }}
-        >
-          <ul className="flex items-center gap-0.5">
-            {NAV.map((item) => (
-              <DesktopItem
-                key={item.label}
-                item={item}
-                open={openMenu === item.label}
-                onOpen={() => setOpenMenu(item.label)}
-                onToggle={() =>
-                  setOpenMenu((cur) => (cur === item.label ? null : item.label))
-                }
-              />
-            ))}
-          </ul>
-        </nav>
-
-        <div className="hidden shrink-0 lg:block">
-          <Link
-            href="/my-trip"
-            className="inline-flex items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-eggshell transition-colors hover:bg-ink-soft"
-          >
-            <Bookmark className="h-4 w-4" aria-hidden />
-            My Trip
+      <header className="van-coi sticky top-0 z-40 border-b-[3px] border-nghe bg-men">
+        <div className="relative z-[1] mx-auto flex h-[62px] max-w-shell items-center justify-between gap-4 px-5">
+          <Link href="/" onClick={() => setMobileOpen(false)} className="flex shrink-0 items-baseline gap-2.5 text-giay">
+            <span className="font-sig text-[19px] font-extrabold uppercase leading-none tracking-[-.02em]">
+              Vietnam Guider
+            </span>
+            {/* Câu tiếng Việt có dấu — tín hiệu bản địa, không phải trang trí. */}
+            <span className="hidden font-doc text-[12.5px] italic text-nghe sm:inline">đi khắp Việt Nam</span>
           </Link>
+
+          <nav aria-label="Primary" className="hidden lg:block" onMouseLeave={() => setOpenMenu(null)}>
+            <ul className="flex items-center gap-1">
+              {NAV.map((item) => (
+                <DesktopItem
+                  key={item.label}
+                  item={item}
+                  open={openMenu === item.label}
+                  onOpen={() => setOpenMenu(item.label)}
+                  onToggle={() => setOpenMenu((c) => (c === item.label ? null : item.label))}
+                />
+              ))}
+            </ul>
+          </nav>
+
+          <div className="flex shrink-0 items-center gap-2">
+            <Link
+              href="/my-trip"
+              className="hidden border-[1.5px] border-nghe px-3 py-2 font-sig text-[11.5px] font-semibold uppercase tracking-[.14em] text-giay hover:bg-nghe hover:text-men-sau lg:inline-block"
+            >
+              Chuyến của tôi
+            </Link>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(true)}
+              aria-label="Open menu"
+              aria-expanded={mobileOpen}
+              className="p-2 text-giay lg:hidden"
+            >
+              <Menu className="h-6 w-6" aria-hidden />
+            </button>
+          </div>
         </div>
+      </header>
 
-        <button
-          type="button"
-          onClick={() => setMobileOpen(true)}
-          aria-label="Open menu"
-          aria-expanded={mobileOpen}
-          className="rounded-lg p-2 text-ink transition-colors hover:bg-ink/5 lg:hidden"
-        >
-          <Menu className="h-6 w-6" aria-hidden />
-        </button>
-      </div>
-
-    </header>
-    {mobileOpen && <MobileDrawer onClose={() => setMobileOpen(false)} />}
+      {mobileOpen && <MobileDrawer onClose={() => setMobileOpen(false)} />}
     </>
   );
 }
 
 function DesktopItem({
-  item,
-  open,
-  onOpen,
-  onToggle,
-}: {
-  item: NavItem;
-  open: boolean;
-  onOpen: () => void;
-  onToggle: () => void;
-}) {
+  item, open, onOpen, onToggle,
+}: { item: NavItem; open: boolean; onOpen: () => void; onToggle: () => void }) {
+  const base =
+    "px-2.5 py-2 font-sig text-[12px] font-semibold uppercase tracking-[.1em] transition-colors";
+
   if (!item.columns) {
     return (
       <li>
-        <Link
-          href={item.href}
-          className="rounded-full px-3 py-2 text-sm font-medium text-charcoal transition-colors hover:bg-ink/5 hover:text-ink"
-        >
+        <Link href={item.href} className={`${base} text-giay/85 hover:text-nghe`}>
           {item.label}
         </Link>
       </li>
@@ -127,46 +100,36 @@ function DesktopItem({
         onClick={onToggle}
         aria-expanded={open}
         aria-haspopup="true"
-        className={`flex items-center gap-1 rounded-full px-3 py-2 text-sm font-medium transition-colors ${
-          open ? "bg-ink/5 text-ink" : "text-charcoal hover:bg-ink/5 hover:text-ink"
-        }`}
+        className={`${base} flex items-center gap-1 ${open ? "text-nghe" : "text-giay/85 hover:text-nghe"}`}
       >
         {item.label}
-        <ChevronDown
-          className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        />
+        <ChevronDown className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
       </button>
 
       {open && (
         <div className="absolute inset-x-0 top-full">
-          <div className="mx-auto max-w-shell px-4 sm:px-6">
-            <div className="mt-1 rounded-2xl border border-sage/20 bg-white p-6 shadow-mega">
-              <div className="mb-4 flex items-center justify-between">
-                <p className="font-display text-base font-semibold text-ink">{item.label}</p>
-                <Link href={item.href} className="text-sm font-medium text-gold hover:underline">
-                  View all &rarr;
+          <div className="mx-auto max-w-shell px-5">
+            <div className="border-2 border-muc bg-giay p-6 shadow-khac">
+              <div className="mb-5 flex items-center justify-between border-b-2 border-muc pb-3">
+                <p className="font-sig text-[12px] font-extrabold uppercase tracking-[.16em] text-men">
+                  {item.label}
+                </p>
+                <Link href={item.href} className="font-sig text-[11px] font-semibold uppercase tracking-[.1em] text-son">
+                  Xem tất cả →
                 </Link>
               </div>
               <div className="grid grid-cols-3 gap-x-8 gap-y-6">
                 {item.columns.map((col) => (
                   <div key={col.heading}>
-                    <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-sage">
+                    <p className="mb-2 font-sig text-[10px] font-semibold uppercase tracking-[.18em] text-tro">
                       {col.heading}
                     </p>
-                    <ul className="space-y-1">
+                    <ul className="space-y-1.5">
                       {col.links.map((link) => (
                         <li key={link.href}>
-                          <Link
-                            href={link.href}
-                            className="group -mx-2 block rounded-lg px-2 py-1.5 transition-colors hover:bg-eggshell"
-                          >
-                            <span className="text-sm font-medium text-charcoal group-hover:text-ink">
-                              {link.label}
-                            </span>
-                            {link.note && (
-                              <span className="block text-xs text-sage">{link.note}</span>
-                            )}
+                          <Link href={link.href} className="block font-doc text-[15.5px] text-muc hover:text-son">
+                            {link.label}
+                            {link.note && <span className="block font-sig text-[11px] text-tro">{link.note}</span>}
                           </Link>
                         </li>
                       ))}
@@ -185,41 +148,32 @@ function DesktopItem({
 function MobileDrawer({ onClose }: { onClose: () => void }) {
   return (
     <div className="lg:hidden">
-      <button
-        type="button"
-        aria-label="Close menu"
-        onClick={onClose}
-        className="fixed inset-0 z-40 bg-charcoal/40"
-      />
-      <div className="fixed inset-y-0 right-0 z-50 flex h-full w-[88%] max-w-sm flex-col bg-eggshell shadow-xl">
-        <div className="flex h-16 shrink-0 items-center justify-between border-b border-sage/20 px-4">
-          <span className="font-display text-base font-semibold text-ink">Menu</span>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Close menu"
-            className="rounded-lg p-2 text-ink hover:bg-ink/5"
-          >
+      <button type="button" aria-label="Close menu" onClick={onClose} className="fixed inset-0 z-40 bg-muc/50" />
+      <div className="fixed inset-y-0 right-0 z-50 flex h-full w-[88%] max-w-sm flex-col border-l-2 border-muc bg-giay">
+        <div className="van-coi flex h-[62px] shrink-0 items-center justify-between border-b-[3px] border-nghe bg-men px-5">
+          <span className="relative z-[1] font-sig text-[13px] font-extrabold uppercase tracking-[.16em] text-giay">
+            Mục lục
+          </span>
+          <button type="button" onClick={onClose} aria-label="Close menu" className="relative z-[1] p-2 text-giay">
             <X className="h-6 w-6" aria-hidden />
           </button>
         </div>
 
-        <nav aria-label="Mobile" className="min-h-0 flex-1 overflow-y-auto px-2 py-3">
-          <ul className="space-y-1">
+        <nav aria-label="Mobile" className="min-h-0 flex-1 overflow-y-auto px-4 py-3">
+          <ul>
             {NAV.map((item) => (
               <MobileItem key={item.label} item={item} onNavigate={onClose} />
             ))}
           </ul>
         </nav>
 
-        <div className="shrink-0 border-t border-sage/20 p-4">
+        <div className="shrink-0 border-t-2 border-muc p-4">
           <Link
             href="/my-trip"
             onClick={onClose}
-            className="flex items-center justify-center gap-1.5 rounded-full bg-ink px-4 py-3 text-sm font-semibold text-eggshell hover:bg-ink-soft"
+            className="block bg-men px-4 py-3 text-center font-sig text-[12px] font-semibold uppercase tracking-[.12em] text-giay shadow-khac"
           >
-            <Bookmark className="h-4 w-4" aria-hidden />
-            My Trip
+            Chuyến của tôi
           </Link>
         </div>
       </div>
@@ -232,12 +186,8 @@ function MobileItem({ item, onNavigate }: { item: NavItem; onNavigate: () => voi
 
   if (!item.columns) {
     return (
-      <li>
-        <Link
-          href={item.href}
-          onClick={onNavigate}
-          className="block rounded-lg px-3 py-3 text-base font-medium text-charcoal hover:bg-ink/5"
-        >
+      <li className="border-b border-dashed border-muc/30">
+        <Link href={item.href} onClick={onNavigate} className="block py-3.5 font-sig text-[13px] font-semibold uppercase tracking-[.1em] text-muc">
           {item.label}
         </Link>
       </li>
@@ -245,35 +195,26 @@ function MobileItem({ item, onNavigate }: { item: NavItem; onNavigate: () => voi
   }
 
   return (
-    <li>
+    <li className="border-b border-dashed border-muc/30">
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
         aria-expanded={open}
-        className="flex w-full items-center justify-between rounded-lg px-3 py-3 text-base font-medium text-charcoal hover:bg-ink/5"
+        className="flex w-full items-center justify-between py-3.5 font-sig text-[13px] font-semibold uppercase tracking-[.1em] text-muc"
       >
         {item.label}
-        <ChevronDown
-          className={`h-4 w-4 text-sage transition-transform ${open ? "rotate-180" : ""}`}
-          aria-hidden
-        />
+        <ChevronDown className={`h-4 w-4 text-son transition-transform ${open ? "rotate-180" : ""}`} aria-hidden />
       </button>
 
       {open && (
-        <div className="pb-2 pl-3">
+        <div className="pb-3 pl-3">
           {item.columns.map((col) => (
-            <div key={col.heading} className="mt-1">
-              <p className="px-3 pt-2 text-xs font-semibold uppercase tracking-wider text-sage">
-                {col.heading}
-              </p>
-              <ul>
+            <div key={col.heading} className="mt-2">
+              <p className="font-sig text-[10px] font-semibold uppercase tracking-[.18em] text-tro">{col.heading}</p>
+              <ul className="mt-1">
                 {col.links.map((link) => (
                   <li key={link.href}>
-                    <Link
-                      href={link.href}
-                      onClick={onNavigate}
-                      className="block rounded-lg px-3 py-2 text-sm text-charcoal hover:bg-ink/5"
-                    >
+                    <Link href={link.href} onClick={onNavigate} className="block py-1.5 font-doc text-[16px] text-muc">
                       {link.label}
                     </Link>
                   </li>

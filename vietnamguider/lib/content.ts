@@ -8,25 +8,20 @@ export type PostMeta = {
   title: string;
   description: string;
   category: string;
-  date: string; // "2026-08-12"
+  date: string;      // "2026-08-13"
+  checked?: string;  // "08 · 2026" — tháng kiểm giá gần nhất
   readMinutes: number;
 };
 
 export function getAllSlugs(): string[] {
   if (!fs.existsSync(DIR)) return [];
-  return fs
-    .readdirSync(DIR)
-    .filter((f) => f.endsWith(".mdx"))
-    .map((f) => f.replace(/\.mdx$/, ""));
+  return fs.readdirSync(DIR).filter((f) => f.endsWith(".mdx")).map((f) => f.replace(/\.mdx$/, ""));
 }
 
-export function getPostBySlug(
-  slug: string
-): { meta: PostMeta; content: string } | null {
+export function getPostBySlug(slug: string): { meta: PostMeta; content: string } | null {
   const fp = path.join(DIR, `${slug}.mdx`);
   if (!fs.existsSync(fp)) return null;
-  const raw = fs.readFileSync(fp, "utf8");
-  const { data, content } = matter(raw);
+  const { data, content } = matter(fs.readFileSync(fp, "utf8"));
   return { meta: data as PostMeta, content };
 }
 

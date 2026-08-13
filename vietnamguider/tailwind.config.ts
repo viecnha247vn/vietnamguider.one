@@ -1,6 +1,11 @@
 import type { Config } from "tailwindcss";
 import typography from "@tailwindcss/typography";
 
+/**
+ * Bảng màu lấy từ vật liệu thật của giao thông Việt Nam:
+ * men sơn bến xe / toa tàu, sơn mài, bột nghệ, giấy dó, mực tre.
+ * Cố ý KHÔNG dùng nền kem + cam đất — đó là mặc định của web AI.
+ */
 const config: Config = {
   content: [
     "./app/**/*.{ts,tsx}",
@@ -11,18 +16,28 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: { DEFAULT: "#143C34", soft: "#1D5347", deep: "#0E2A25" },
-        gold: { DEFAULT: "#C89B3C", soft: "#DDB968" },
-        eggshell: "#FAF6EE",
-        charcoal: "#1C1B19",
-        sage: "#6B7A70",
+        men: { DEFAULT: "#0B4F45", sau: "#06322C", nhat: "#A9C3BB" }, // men ngọc
+        son: "#8A2B20",   // sơn mài — chỉ dùng cho con dấu, nhãn, cảnh báo
+        nghe: "#E3A21A",  // nghệ — chữ số, kẻ chỉ, nút chính
+        giay: { DEFAULT: "#F2EDE1", sau: "#E6DCC9" }, // giấy dó
+        muc: "#16130F",   // mực tre
+        tro: "#7D7669",
       },
       fontFamily: {
-        display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        // Chữ "biển hiệu": Be Vietnam Pro do người Việt thiết kế, dấu chuẩn.
+        sig: ["var(--font-sig)", "system-ui", "sans-serif"],
+        // Chữ "đọc": serif ấm, dấu tiếng Việt đầy đủ.
+        doc: ["var(--font-doc)", "Georgia", "serif"],
+        // Chữ "số liệu": giá tiền, giờ, km — luôn tabular.
+        so: ["var(--font-so)", "ui-monospace", "monospace"],
       },
-      maxWidth: { shell: "1200px" },
-      boxShadow: { mega: "0 24px 48px -24px rgba(14, 42, 37, 0.35)" },
+      maxWidth: { shell: "940px" },
+      borderRadius: { none: "0px" }, // bo góc là dấu vết của template
+      boxShadow: {
+        // Lệch bản in kiểu tranh khắc gỗ — thay cho drop-shadow mềm.
+        khac: "3px 3px 0 #16130F",
+        khacnho: "2px 2px 0 #E3A21A",
+      },
     },
   },
   plugins: [typography],
