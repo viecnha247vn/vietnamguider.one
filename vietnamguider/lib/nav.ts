@@ -4,40 +4,30 @@
 // Mục nào chưa có nội dung thì trang hub của nó đặt noindex
 // (xem components/HubPage.tsx) — có trang, không 404, không rác trên Google.
 
+import { DESTINATIONS } from "@/lib/destinations";
+
+/** Menu chỉ liệt kê điểm đến ĐÃ có bài — mục không có bài thì không thành link. */
+const navDest = (r: string): NavLink[] =>
+  DESTINATIONS.filter((d) => d.region === r && d.guide).map((d) => ({ label: d.name, href: d.guide! }));
+
 export type NavLink = { label: string; href: string; note?: string };
 export type NavColumn = { heading: string; links: NavLink[] };
 export type NavItem = {
   label: string;
   href: string;
   columns?: NavColumn[];
-  soon?: boolean; // chưa có nội dung — hiện dấu "sắp có" trong menu
+  soon?: boolean; // chưa có nội dung — hiện dấu "soon" trong menu
 };
 
-/** 10 điểm đến rút từ chính 10 bài đã có. Không bịa. */
-export const DESTINATIONS = [
-  { name: "Sa Pa",      region: "The North",  href: "/blog/hanoi-to-sa-pa" },
-  { name: "Ninh Bình",  region: "The North",  href: "/blog/hanoi-to-ninh-binh" },
-  { name: "Hà Giang",   region: "The North",  href: "/blog/hanoi-to-ha-giang" },
-  { name: "Cát Bà",     region: "The North",  href: "/blog/hanoi-to-cat-ba" },
-  { name: "Mai Châu",   region: "The North",  href: "/blog/hanoi-to-mai-chau" },
-  { name: "Hội An",     region: "Central", href: "/blog/da-nang-to-hoi-an" },
-  { name: "Huế",        region: "Central", href: "/blog/da-nang-to-hue" },
-  { name: "Đà Lạt",     region: "The South",  href: "/blog/ho-chi-minh-city-to-da-lat" },
-  { name: "Mũi Né",     region: "The South",  href: "/blog/ho-chi-minh-city-to-mui-ne" },
-  { name: "Phú Quốc",   region: "The South",  href: "/blog/ho-chi-minh-city-to-phu-quoc" },
-];
-
-const byRegion = (r: string): NavLink[] =>
-  DESTINATIONS.filter((d) => d.region === r).map((d) => ({ label: d.name, href: d.href }));
 
 export const NAV: NavItem[] = [
   {
     label: "Destinations",
     href: "/destinations",
     columns: [
-      { heading: "The North", links: byRegion("Miền Bắc") },
-      { heading: "Central", links: byRegion("Miền Trung") },
-      { heading: "The South", links: byRegion("Miền Nam") },
+      { heading: "The North", links: navDest("The North") },
+      { heading: "Central", links: navDest("Central") },
+      { heading: "The South", links: navDest("The South") },
     ],
   },
   { label: "Plan Your Trip", href: "/plan", soon: true },
