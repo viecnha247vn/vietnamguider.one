@@ -4,6 +4,8 @@
  * `guide` chỉ điền khi bài tuyến ĐÃ TỒN TẠI. Điểm chưa có bài thì để trống —
  * thẻ hiện dấu "guide soon" và không phải là link. Không bao giờ trỏ vào 404.
  */
+import PHOTOS from "./destination-photos.json";
+
 export type Region = "The North" | "Central" | "The South";
 
 /**
@@ -87,6 +89,17 @@ export const DESTINATIONS: Destination[] = [
   { name: "Côn Đảo", region: "The South",
     blurb: "A remote prison island turned marine park. Hard to reach, which is the point." },
 ];
+
+/**
+ * Ảnh được TRỘN VÀO từ destination-photos.json — file do
+ * scripts/fetch-destination-photos.mjs sinh ra. Không phải sửa tay file này.
+ * Khoá của JSON là `name` của điểm đến.
+ */
+const photos = PHOTOS as Record<string, Photo>;
+DESTINATIONS.forEach((d) => {
+  const p = photos[d.name];
+  if (p) d.photo = p;
+});
 
 export const REGIONS: Region[] = ["The North", "Central", "The South"];
 

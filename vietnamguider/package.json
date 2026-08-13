@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "photos": "node scripts/fetch-destination-photos.mjs",
+    "photos:dry": "node scripts/fetch-destination-photos.mjs --dry",
+    "photos:cc0": "node scripts/fetch-destination-photos.mjs --cc0"
   },
   "dependencies": {
     "next": "15.5.23",
