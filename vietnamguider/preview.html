@@ -1,0 +1,192 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Vietnam Guider — home</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Lora:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--men:#0B4F45;--men2:#06322C;--son:#8A2B20;--nghe:#E3A21A;--giay:#F2EDE1;--giay2:#E6DCC9;--muc:#16130F;--tro:#7D7669}
+*{box-sizing:border-box}body{margin:0;background:var(--giay);color:var(--muc);font:17px/1.7 Lora,Georgia,serif}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:99;opacity:.055;mix-blend-mode:multiply;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/></filter><rect width='180' height='180' filter='url(%23n)'/></svg>")}
+.w{max-width:940px;margin:0 auto;padding:0 20px}
+.van{position:relative}.van::after{content:"";position:absolute;inset:0;opacity:.1;pointer-events:none;
+background-image:repeating-linear-gradient(58deg,#fff 0 1px,transparent 1px 7px),repeating-linear-gradient(-58deg,#fff 0 1px,transparent 1px 7px)}
+header.bar{background:var(--men);border-bottom:3px solid var(--nghe)}
+.bar .w{display:flex;align-items:center;justify-content:space-between;height:62px;position:relative;z-index:1}
+.logo{font:800 19px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:-.02em;color:var(--giay)}
+.logo em{font:italic 12.5px Lora,serif;color:var(--nghe);margin-left:8px}
+.navstrip{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;margin:0 14px;flex:1;min-width:0}
+.navstrip::-webkit-scrollbar{display:none}
+.navstrip a{white-space:nowrap;padding:8px;font:600 11px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.06em;color:#F2EDE1D9;text-decoration:none}
+.navstrip a:hover{color:var(--nghe)}.soon{font:11px "IBM Plex Mono";text-transform:lowercase;color:#E3A21AB3;margin-left:3px}
+.hero{background:var(--men);color:var(--giay);padding:56px 0}
+.hero .w{position:relative;z-index:1}
+.kick{display:flex;align-items:center;gap:8px;font:600 11px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.2em;color:var(--nghe);margin:0}
+.pin{width:9px;height:9px;background:var(--son);box-shadow:2px 2px 0 var(--nghe);display:block;flex:none}
+h1{font:600 38px/1.12 Lora,serif;margin:16px 0 0;max-width:16ch;letter-spacing:-.01em}h1 em{color:var(--nghe)}
+.dek{margin:18px 0 0;max-width:52ch;font-size:17px;color:#D8E2DC}
+.btn{display:inline-block;margin-top:26px;background:var(--nghe);color:var(--men2);text-decoration:none;padding:13px 20px;
+font:600 12px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.12em;box-shadow:3px 3px 0 var(--muc)}
+.btn.ghost{background:transparent;color:var(--giay);border:1.5px solid var(--nghe);box-shadow:none;margin-left:8px}
+.btn.dark{background:var(--men);color:var(--giay)}
+section.pad{padding:46px 0}
+.head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;border-bottom:2px solid var(--muc);padding-bottom:12px;margin-bottom:22px}
+.head h2{font:600 28px/1.2 Lora,serif;margin:6px 0 0}
+.head .k{display:flex;align-items:center;gap:8px;font:600 10.5px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--son);margin:0}
+.head .d{margin:6px 0 0;max-width:52ch;font-size:16px;color:#16130FBF}
+.head a{font:600 11.5px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.1em;color:var(--son);text-decoration:none;white-space:nowrap}
+.rows{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--muc);border:2px solid var(--muc);list-style:none;margin:0;padding:0}
+.rows a{display:flex;justify-content:space-between;align-items:baseline;gap:14px;background:var(--giay);padding:14px 18px;text-decoration:none;color:inherit;height:100%}
+.rows a:hover{background:var(--giay2)}.rows b{font:600 18px Lora,serif}.rows span{font:10px "IBM Plex Mono";text-transform:uppercase;letter-spacing:.06em;color:var(--tro);white-space:nowrap}
+.basics{background:#E6DCC966;border-top:2px solid var(--muc);border-bottom:2px solid var(--muc)}
+.bgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--muc);border:2px solid var(--muc);list-style:none;margin:0;padding:0}
+.bgrid a{display:flex;flex-direction:column;gap:8px;background:var(--giay);padding:20px;text-decoration:none;color:inherit;height:100%}
+.bgrid a:hover{background:var(--giay2)}.bgrid svg{color:var(--son)}
+.bgrid b{font:800 12px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.14em;color:var(--men)}
+.bgrid span{font-size:14.5px;line-height:1.35;color:#16130FB3}
+.card{display:block;border:2px solid var(--muc);background:var(--giay);text-decoration:none;color:inherit;margin-bottom:20px}
+.card .ph{position:relative;aspect-ratio:16/6;background:var(--giay2);border-bottom:2px solid var(--muc)}
+.card.lead .ph{aspect-ratio:16/7}
+.card .ph .pin{position:absolute;left:16px;top:16px}
+.card .ph i{position:absolute;right:16px;bottom:10px;font:9px "IBM Plex Mono";text-transform:uppercase;letter-spacing:.14em;color:var(--tro);font-style:normal}
+.card .bd{padding:20px}.card.lead .bd{padding:26px}
+.meta{display:flex;justify-content:space-between;gap:14px;font:600 10px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--son)}
+.meta em{font:10px "IBM Plex Mono";font-style:normal;color:var(--tro);letter-spacing:.06em}
+.card h3{font:600 20px/1.2 Lora,serif;margin:8px 0 0}.card.lead h3{font-size:28px}
+.card p{margin:8px 0 0;font-size:15px;line-height:1.55;color:#16130FBF}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.regions{display:grid;grid-template-columns:1fr 1fr 1fr;gap:26px}
+.regions p.r{border-bottom:1px dashed #16130F66;padding-bottom:8px;margin:0;font:600 10.5px "Be Vietnam Pro",sans-serif;text-transform:uppercase;letter-spacing:.18em;color:var(--tro)}
+.regions ul{list-style:none;margin:8px 0 0;padding:0}.regions li{font:17px Lora,serif;padding:1px 0}
+.regions .off{color:#16130F73}
+.how{background:var(--men);color:var(--giay);border-top:2px solid var(--muc);padding:46px 0}
+.how .w{position:relative;z-index:1}
+.how .three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:20px}
+.how h3{font:600 20px Lora,serif;color:var(--nghe);margin:0}
+.how p{margin:6px 0 0;font-size:15.5px;line-height:1.6;color:#F2EDE1CC}
+footer{background:var(--men2);color:#B9CCC6;padding:28px 0;font-size:13.5px}
+@media(max-width:640px){.rows,.bgrid,.two,.regions,.how .three{grid-template-columns:1fr}.bgrid{grid-template-columns:1fr 1fr}h1{font-size:34px}.head h2{font-size:24px}}
+
+/* ── Màn chào ─────────────────────────────────────────────── */
+#welcome{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;
+  justify-content:center;text-align:center;padding:0 24px;background:var(--men);color:var(--giay);
+  transition:opacity .5s ease}
+#welcome.out{opacity:0;pointer-events:none}
+#welcome::after{content:"";position:absolute;inset:0;opacity:.1;pointer-events:none;
+  background-image:repeating-linear-gradient(58deg,#fff 0 1px,transparent 1px 8px),
+                   repeating-linear-gradient(-58deg,#fff 0 1px,transparent 1px 8px)}
+#welcome .in{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.wseal{width:14px;height:14px;background:var(--son);box-shadow:2px 2px 0 var(--nghe);
+  animation:vgStamp .55s cubic-bezier(.2,1.4,.4,1) both}
+.whello{margin-top:28px;font:600 46px/1 Lora,serif;animation:vgRise .6s ease-out .22s both}
+.wphon{margin-top:12px;font:400 11px "IBM Plex Mono",monospace;text-transform:uppercase;
+  letter-spacing:.24em;color:var(--nghe);animation:vgRise .6s ease-out .42s both}
+.wline{margin-top:28px;max-width:26ch;font:400 19px/1.6 Lora,serif;color:#F2EDE1D9;
+  animation:vgRise .6s ease-out .62s both}
+.wbar{margin-top:36px;height:3px;width:132px;background:var(--nghe);transform-origin:left;
+  animation:vgBar 2600ms linear both}
+.wskip{margin-top:16px;font:400 9.5px "IBM Plex Mono",monospace;text-transform:uppercase;
+  letter-spacing:.18em;color:#F2EDE173;animation:vgRise .6s ease-out .62s both}
+@keyframes vgStamp{0%{transform:scale(2.4) rotate(-8deg);opacity:0}
+  60%{transform:scale(.92) rotate(0);opacity:1}100%{transform:scale(1);opacity:1}}
+@keyframes vgRise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+@keyframes vgBar{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@media(min-width:640px){.whello{font-size:64px}.wline{font-size:22px}}
+@media(prefers-reduced-motion:reduce){#welcome{display:none}}
+</style></head><body>
+
+
+<div id="welcome"><div class="in">
+  <span class="wseal"></span>
+  <p class="whello">Xin chào</p>
+  <p class="wphon">sin chow · hello</p>
+  <p class="wline">Welcome to Vietnam. Let&rsquo;s get you moving.</p>
+  <span class="wbar"></span>
+  <p class="wskip">tap to skip</p>
+</div></div>
+<script>
+(function(){
+  var w=document.getElementById("welcome"), t1, t2;
+  function go(){ clearTimeout(t1); w.classList.add("out");
+    t2=setTimeout(function(){ w.remove(); }, 500); }
+  t1=setTimeout(go, 2600);
+  ["pointerdown","wheel","keydown","touchstart"].forEach(function(e){
+    window.addEventListener(e, go, {once:true, passive:true}); });
+})();
+</script>
+
+<header class="bar van"><div class="w">
+<span class="logo">Vietnam Guider<em>đi khắp Việt Nam</em></span>
+<nav class="navstrip">
+<a href="#">Destinations</a><a href="#">Plan Your Trip<span class="soon">soon</span></a><a href="#">Things To Do<span class="soon">soon</span></a>
+<a href="#">Getting Around</a><a href="#">Where To Stay<span class="soon">soon</span></a><a href="#">Food<span class="soon">soon</span></a>
+<a href="#">Vietnam Visa<span class="soon">soon</span></a><a href="#">Travel Tools<span class="soon">soon</span></a><a href="#">Deals<span class="soon">soon</span></a>
+</nav></div></header>
+
+<section class="hero van"><div class="w">
+<p class="kick"><i class="pin"></i> Getting around Vietnam</p>
+<h1>Written from the pavement, <em>not the brochure</em>.</h1>
+<p class="dek">Named operators. Real pickup addresses. Prices in dong, re-checked every month. No adjectives where a number would do.</p>
+<div><a class="btn" href="#">Route guides →</a><a class="btn ghost" href="#">20 destinations</a></div>
+</div></section>
+
+<section class="pad"><div class="w">
+<div class="head"><div><p class="k"><i class="pin"></i> Getting around</p><h2>Popular journeys</h2>
+<p class="d">One page per journey. Every price is in dong first, and every page carries the month we last checked it.</p></div>
+<a href="#">All 10 guides →</a></div>
+<ul class="rows">
+<li><a href="#"><b>Hà Nội to Sa Pa: every option, priced in dong</b><span>08 · 2026</span></a></li>
+<li><a href="#"><b>Hà Nội to Ninh Bình</b><span>4 MIN</span></a></li>
+<li><a href="#"><b>Đà Nẵng to Hội An</b><span>4 MIN</span></a></li>
+<li><a href="#"><b>Hà Nội to Hà Giang</b><span>5 MIN</span></a></li>
+<li><a href="#"><b>TP.HCM to Đà Lạt</b><span>4 MIN</span></a></li>
+<li><a href="#"><b>Đà Nẵng to Huế</b><span>4 MIN</span></a></li>
+</ul></div></section>
+
+<section class="basics"><div class="w" style="padding-top:46px;padding-bottom:46px">
+<div class="head"><div><p class="k"><i class="pin"></i> Before you go</p><h2>Travel basics</h2>
+<p class="d">The six things every first trip needs settled. Short answers, no sign-up.</p></div></div>
+<ul class="bgrid">
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 11.5c9-1 21-1.2 30 0 .8 6 .8 11 0 17-9 1.2-21 1-30 0-.9-6-.9-11 0-17Z"/><path d="M10 17c6-.7 14-.8 20 0M10 23c6-.7 14-.8 20 0"/></svg><b>Visas</b><span>E-visa, exemptions, extensions</span></a></li>
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 12c9-1 19-1 28 0v13c-9 1-19 1-28 0V12Z"/><path d="M6 19c9-.8 19-.8 28 0"/><circle cx="12" cy="29" r="2.5"/><circle cx="28" cy="29" r="2.5"/></svg><b>Transport</b><span>Bus, train, van, plane</span></a></li>
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 27c-4 0-6-2.5-6-5.5S9.5 16 13 16c.6-4 3.6-6 7-6 4 0 7 3 7 7 3 0 6 2 6 5s-2.5 5-6 5H13Z"/><path d="M4 31c4-.6 9-.6 13 0"/></svg><b>Weather</b><span>Month by month, by region</span></a></li>
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12c11-1.2 21-1.2 32 0v16c-11 1.2-21 1.2-32 0V12Z"/><circle cx="20" cy="20" r="4.5"/><path d="M9 17v6M31 17v6"/></svg><b>Money</b><span>Dong, cards, what things cost</span></a></li>
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5c4 2.5 8 3.5 12 3.5.5 12-3 20-12 26C11 28.5 7.5 20.5 8 8.5 12 8.5 16 7.5 20 5Z"/><path d="M14.5 19.5 19 24l7-8.5"/></svg><b>Safety</b><span>Scams, traffic, street food</span></a></li>
+<li><a href="#"><svg width="40" height="40" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c10-1 20-1 30 0-1 7-6 11-15 11S6 27 5 20Z"/><path d="M24 6 18 17M29 7l-7 10"/></svg><b>Food</b><span>What to order, how to say it</span></a></li>
+</ul></div></section>
+
+<section class="pad"><div class="w">
+<div class="head"><div><p class="k"><i class="pin"></i> Reading</p><h2>Latest guides</h2>
+<p class="d">Long enough to be useful, short enough to read before the bus arrives.</p></div></div>
+<a class="card lead" href="#"><div class="ph"><i class="pin"></i><i>photo to come</i></div><div class="bd">
+<div class="meta"><span>Getting Around</span><em>CHECKED 08 · 2026</em></div>
+<h3>Hà Nội to Sa Pa: every option, priced in dong</h3>
+<p>Sleeper bus, limousine van, private car or the overnight train to Lào Cai — named operators, real pickup addresses, and what actually happens on the day.</p></div></a>
+<div class="two">
+<a class="card" href="#"><div class="ph"><i class="pin"></i><i>photo to come</i></div><div class="bd">
+<div class="meta"><span>Getting Around</span><em>4 MIN</em></div><h3>Đà Nẵng to Hội An</h3>
+<p>Thirty kilometres, forty minutes, and four ways to cover it.</p></div></a>
+<a class="card" href="#"><div class="ph"><i class="pin"></i><i>photo to come</i></div><div class="bd">
+<div class="meta"><span>Getting Around</span><em>5 MIN</em></div><h3>Hà Nội to Hà Giang</h3>
+<p>The night bus that gets you to the loop, and the one to avoid.</p></div></a>
+</div>
+<a class="btn dark" href="#">View more →</a>
+</div></section>
+
+<section class="pad" style="border-top:2px solid var(--muc)"><div class="w">
+<div class="head"><div><p class="k"><i class="pin"></i> Places to go</p><h2>Twenty destinations, three regions</h2>
+<p class="d">Where a route guide exists, the name takes you straight to it.</p></div><a href="#">See all →</a></div>
+<div class="regions">
+<div><p class="r">The North</p><ul><li>Sa Pa</li><li>Ninh Bình</li><li>Hà Giang</li><li>Cát Bà</li><li>Mai Châu</li><li class="off">Hạ Long</li><li class="off">Mộc Châu</li><li class="off">Cao Bằng</li></ul></div>
+<div><p class="r">Central</p><ul><li>Hội An</li><li>Huế</li><li class="off">Đà Nẵng</li><li class="off">Phong Nha</li><li class="off">Quy Nhơn</li><li class="off">Nha Trang</li></ul></div>
+<div><p class="r">The South</p><ul><li>Đà Lạt</li><li>Mũi Né</li><li>Phú Quốc</li><li class="off">Hồ Chí Minh City</li><li class="off">Cần Thơ</li><li class="off">Côn Đảo</li></ul></div>
+</div></div></section>
+
+<section class="how van"><div class="w">
+<p class="kick"><i class="pin"></i> How we work</p>
+<div class="three">
+<div><h3>We name names</h3><p>Sapa Express, Bến xe Mỹ Đình, 12 Lê Thái Tổ. Never “a reputable operator”.</p></div>
+<div><h3>Dong first</h3><p>450.000₫ ≈ $18. Prices are what locals pay, in the currency you will hand over.</p></div>
+<div><h3>Dated, not evergreen</h3><p>Every route page carries the month we last checked it. Old is marked old.</p></div>
+</div></div></section>
+
+<footer><div class="w"><b style="font:800 15px 'Be Vietnam Pro',sans-serif;text-transform:uppercase;color:var(--giay)">Vietnam Guider</b></div></footer>
+</body></html>

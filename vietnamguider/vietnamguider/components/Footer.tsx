@@ -1,0 +1,26 @@
+import Link from "next/link";
+
+export default function Footer() {
+  return (
+    <footer className="mt-14 bg-men-sau py-8 text-giay/70">
+      <div className="mx-auto flex max-w-shell flex-wrap justify-between gap-6 px-5">
+        <div className="max-w-[46ch]">
+          <p className="font-sig text-[15px] font-extrabold uppercase tracking-[-.01em] text-giay">
+            Vietnam Guider
+          </p>
+          <p className="mt-2 font-so text-[10.5px] leading-[1.6] tracking-[.03em] text-men-nhat">
+            Route guides written from the pavement. Prices in dong, re-checked monthly.
+          </p>
+        </div>
+        <nav className="font-sig text-[11.5px] uppercase tracking-[.12em]">
+          <Link href="/blog" className="block py-1 hover:text-nghe">Route guides</Link>
+          <Link href="/destinations" className="block py-1 hover:text-nghe">Destinations</Link>
+          <Link href="/about" className="block py-1 hover:text-nghe">About</Link>
+          <Link href="/methodology" className="block py-1 hover:text-nghe">How we check things</Link>
+          <Link href="/disclosure" className="block py-1 hover:text-nghe">How we make money</Link>
+          <Link href="/my-trip" className="block py-1 hover:text-nghe">My Trip</Link>
+        </nav>
+      </div>
+    </footer>
+  );
+}
